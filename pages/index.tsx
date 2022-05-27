@@ -5,6 +5,8 @@ import House from '../types/house'
 import Testimonial from '../types/testimonial'
 import getData from '../utils/data'
 import { formatPhoneNumber } from '../utils/pipes'
+import Hero from '../components/Hero'
+import Container from '../components/Container'
 
 type Props = {
 	houses: Array<House>
@@ -15,37 +17,40 @@ type Props = {
 const Home = ({ houses, testimonials, contactInfo }: Props) => {
 	return (
 		<>
-			<Heading>Houses</Heading>
-			<UnorderedList>
-				{houses.map((house, index) => (
-					<ListItem key={index}>
-						House {index + 1}
-						<UnorderedList>
-							<ListItem>{house.briefDescription}</ListItem>
-							<ListItem>{house.squareFeet} sqft</ListItem>
-							<ListItem>{house.bedrooms} bedrooms</ListItem>
-							<ListItem>{house.wholeBathrooms} whole bathrooms</ListItem>
-							<ListItem>{house.halfBathrooms} half bathrooms</ListItem>
-						</UnorderedList>
-					</ListItem>
-				))}
-			</UnorderedList>
+			<Hero />
+			<Container>
+				<Heading mt={'2rem'}>Houses</Heading>
+				<UnorderedList>
+					{houses.map((house, index) => (
+						<ListItem key={index}>
+							House {index + 1}
+							<UnorderedList>
+								<ListItem>{house.briefDescription}</ListItem>
+								<ListItem>{house.squareFeet} sqft</ListItem>
+								<ListItem>{house.bedrooms} bedrooms</ListItem>
+								<ListItem>{house.wholeBathrooms} whole bathrooms</ListItem>
+								<ListItem>{house.halfBathrooms} half bathrooms</ListItem>
+							</UnorderedList>
+						</ListItem>
+					))}
+				</UnorderedList>
 
-			<Heading>Testimonials</Heading>
-			<UnorderedList>
-				{testimonials.map((testimonial, index) => (
-					<ListItem key={index}>
-						{testimonial.name} from {testimonial.location}:
-						<UnorderedList>
-							<ListItem>{testimonial.text}</ListItem>
-						</UnorderedList>
-					</ListItem>
-				))}
-			</UnorderedList>
+				<Heading mt={'2rem'}>Testimonials</Heading>
+				<UnorderedList>
+					{testimonials.map((testimonial, index) => (
+						<ListItem key={index}>
+							{testimonial.name} from {testimonial.location}:
+							<UnorderedList>
+								<ListItem>{testimonial.text}</ListItem>
+							</UnorderedList>
+						</ListItem>
+					))}
+				</UnorderedList>
 
-			<Heading>Contact Us</Heading>
-			<Text>Email: {contactInfo.email}</Text>
-			<Text>Phone: {formatPhoneNumber(contactInfo.phone)}</Text>
+				<Heading mt={'2rem'}>Contact Us</Heading>
+				<Text>Email: {contactInfo.email}</Text>
+				<Text mb={'2rem'}>Phone: {formatPhoneNumber(contactInfo.phone)}</Text>
+			</Container>
 		</>
 	)
 }
