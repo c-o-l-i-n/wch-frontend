@@ -1,4 +1,5 @@
-import type { GetServerSideProps, NextPage } from 'next'
+import { Heading, ListItem, Text, UnorderedList } from '@chakra-ui/react'
+import type { GetServerSideProps } from 'next'
 import ContactInformation from '../types/contactInformation'
 import House from '../types/house'
 import Testimonial from '../types/testimonial'
@@ -14,37 +15,37 @@ type Props = {
 const Home = ({ houses, testimonials, contactInfo }: Props) => {
 	return (
 		<>
-			<h1>Houses</h1>
-			<ul>
+			<Heading>Houses</Heading>
+			<UnorderedList>
 				{houses.map((house, index) => (
-					<li key={index}>
+					<ListItem key={index}>
 						House {index + 1}
-						<ul>
-							<li>{house.briefDescription}</li>
-							<li>{house.squareFeet} sqft</li>
-							<li>{house.bedrooms} bedrooms</li>
-							<li>{house.wholeBathrooms} whole bathrooms</li>
-							<li>{house.halfBathrooms} half bathrooms</li>
-						</ul>
-					</li>
+						<UnorderedList>
+							<ListItem>{house.briefDescription}</ListItem>
+							<ListItem>{house.squareFeet} sqft</ListItem>
+							<ListItem>{house.bedrooms} bedrooms</ListItem>
+							<ListItem>{house.wholeBathrooms} whole bathrooms</ListItem>
+							<ListItem>{house.halfBathrooms} half bathrooms</ListItem>
+						</UnorderedList>
+					</ListItem>
 				))}
-			</ul>
+			</UnorderedList>
 
-			<h1>Testimonials</h1>
-			<ul>
+			<Heading>Testimonials</Heading>
+			<UnorderedList>
 				{testimonials.map((testimonial, index) => (
-					<li key={index}>
+					<ListItem key={index}>
 						{testimonial.name} from {testimonial.location}:
-						<ul>
-							<li>{testimonial.text}</li>
-						</ul>
-					</li>
+						<UnorderedList>
+							<ListItem>{testimonial.text}</ListItem>
+						</UnorderedList>
+					</ListItem>
 				))}
-			</ul>
+			</UnorderedList>
 
-			<h1>Contact Us</h1>
-			<p>Email: {contactInfo.email}</p>
-			<p>Phone: {formatPhoneNumber(contactInfo.phone)}</p>
+			<Heading>Contact Us</Heading>
+			<Text>Email: {contactInfo.email}</Text>
+			<Text>Phone: {formatPhoneNumber(contactInfo.phone)}</Text>
 		</>
 	)
 }
