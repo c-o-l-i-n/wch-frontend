@@ -14,7 +14,7 @@ export default function WithBackgroundImage() {
 	return (
 		<Flex
 			w={'full'}
-			h={'70vh'}
+			h={'80vh'}
 			minHeight={'min-content'}
 			maxHeight={'50rem'}
 			backgroundImage={'url(/images/home.jpg)'}
@@ -29,7 +29,11 @@ export default function WithBackgroundImage() {
 				backgroundColor='blackAlpha.600'
 			>
 				<Container>
-					<Stack maxW={'4xl'} align={'flex-start'} spacing={'3rem'}>
+					<Stack
+						maxWidth={'4xl'}
+						align={['center', 'flex-start']}
+						spacing={'3rem'}
+					>
 						<Heading
 							color={'white'}
 							fontWeight={700}
@@ -38,7 +42,7 @@ export default function WithBackgroundImage() {
 						>
 							We build high-quality, affordable homes in Stark County
 						</Heading>
-						<Stack direction={'row'} spacing={'1rem'}>
+						<Stack direction={['column', 'row']} spacing={'1rem'}>
 							<Link href='/contact'>
 								<Button
 									bg={'brand'}
