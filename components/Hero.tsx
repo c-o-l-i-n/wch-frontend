@@ -2,22 +2,29 @@ import {
 	Stack,
 	Flex,
 	Button,
-	Text,
 	Heading,
 	VStack,
 	useBreakpointValue,
 } from '@chakra-ui/react'
 import Link from 'next/link'
 import Container from './Container'
+import HomePage from '../types/CmsSingleTypes/homePage'
 
-export default function WithBackgroundImage() {
+const Hero = ({
+	heroImage,
+	heroText,
+	primaryCallToActionButtonText,
+	primaryCallToActionButtonLink,
+	secondaryCallToActionButtonText,
+	secondaryCallToActionButtonLink,
+}: HomePage) => {
 	return (
 		<Flex
 			w={'full'}
-			h={'80vh'}
+			h={'70vh'}
 			minHeight={'min-content'}
 			maxHeight={'50rem'}
-			backgroundImage={'url(/images/home.jpg)'}
+			backgroundImage={heroImage.data.attributes.url}
 			backgroundSize={'cover'}
 			backgroundPosition={'center center'}
 		>
@@ -25,7 +32,7 @@ export default function WithBackgroundImage() {
 				w={'full'}
 				justifyContent={'center'}
 				alignItems={'flex-start'}
-				px={useBreakpointValue({ base: 4, md: 8 })}
+				px={[4, 8]}
 				backgroundColor='blackAlpha.600'
 			>
 				<Container>
@@ -40,25 +47,27 @@ export default function WithBackgroundImage() {
 							lineHeight={1.2}
 							fontSize={useBreakpointValue({ base: '4xl', md: '6xl' })}
 						>
-							We build high-quality, affordable homes in Stark County
+							{heroText}
 						</Heading>
 						<Stack direction={['column', 'row']} spacing={'1rem'}>
-							<Link href='/contact'>
+							<Link href={primaryCallToActionButtonLink}>
 								<Button
 									bg={'brand'}
 									color={'white'}
 									_hover={{ bg: 'brandDark' }}
 								>
-									Let&apos;s Discuss Your Dream Home
+									{primaryCallToActionButtonText}
 								</Button>
 							</Link>
-							<Button
-								bg={'transparent'}
-								color={'whiteAlpha.800'}
-								_hover={{ bg: 'whiteAlpha.400' }}
-							>
-								About Us
-							</Button>
+							<Link href={secondaryCallToActionButtonLink}>
+								<Button
+									bg={'transparent'}
+									color={'whiteAlpha.800'}
+									_hover={{ bg: 'whiteAlpha.400' }}
+								>
+									{secondaryCallToActionButtonText}
+								</Button>
+							</Link>
 						</Stack>
 					</Stack>
 				</Container>
@@ -66,3 +75,5 @@ export default function WithBackgroundImage() {
 		</Flex>
 	)
 }
+
+export default Hero

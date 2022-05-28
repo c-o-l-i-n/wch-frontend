@@ -1,18 +1,12 @@
-import {
-	Box,
-	chakra,
-	HStack,
-	Link,
-	Stack,
-	Text,
-	useColorModeValue,
-	VisuallyHidden,
-	VStack,
-	Image,
-} from '@chakra-ui/react'
+import { Box, Stack, Image } from '@chakra-ui/react'
+import SiteInformation from '../types/CmsSingleTypes/siteInformation'
 import Container from './Container'
+import Markdown from './Markdown'
 
-const Footer = () => {
+type Props = {
+	siteInfo: SiteInformation
+}
+const Footer = ({ siteInfo }: Props) => {
 	return (
 		<Box backgroundColor='gray.700' color='white' py={'3rem'}>
 			<Container>
@@ -22,12 +16,7 @@ const Footer = () => {
 					spacing='2rem'
 				>
 					<Box textAlign={['center', 'left']}>
-						<Text mb={'1rem'}>
-							Copyright &copy; {new Date().getFullYear()} Williams Custom Homes,
-							LLC
-						</Text>
-						<Text>Stark County, Ohio</Text>
-						<Text>(330) 904-7520</Text>
+						<Markdown text={siteInfo.footer} siteInfo={siteInfo} />
 					</Box>
 					<Image
 						src='/images/equal-housing.svg'

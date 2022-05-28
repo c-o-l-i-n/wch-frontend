@@ -13,8 +13,12 @@ import {
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import Container from './Container'
 import Link from 'next/link'
+import SiteInformation from '../types/CmsSingleTypes/siteInformation'
 
-export default function Navbar() {
+type Props = {
+	siteInfo: SiteInformation
+}
+const Navbar = ({ siteInfo }: Props) => {
 	const { isOpen, onToggle } = useDisclosure()
 
 	return (
@@ -35,8 +39,8 @@ export default function Navbar() {
 								}}
 							>
 								<Image
-									src='/images/logo.svg'
-									alt='Williams Custom Homes'
+									src={siteInfo.logo.data.attributes.url}
+									alt={siteInfo.logo.data.attributes.alternativeText}
 									h='50%'
 								></Image>
 							</Flex>
@@ -162,3 +166,5 @@ const NAV_ITEMS: Array<NavItem> = [
 		href: '/contact',
 	},
 ]
+
+export default Navbar
