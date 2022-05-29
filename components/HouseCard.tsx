@@ -44,7 +44,8 @@ const HouseCard = ({ house }: Props) => {
 					mt={'0.75rem'}
 					mb={'0.5rem'}
 					fontWeight={'bold'}
-					color={'brandDark'}
+					color={'brand'}
+					fontSize={'1.1rem'}
 					spacing={'2rem'}
 				>
 					<HStack>

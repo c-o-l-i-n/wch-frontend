@@ -1,6 +1,6 @@
-import { Flex, Heading, Text, Stack, HStack } from '@chakra-ui/react'
-import { FaPhone } from 'react-icons/fa'
+import { Flex, Text, HStack } from '@chakra-ui/react'
 import { ReactElement } from 'react'
+import Link from 'next/link'
 
 interface FeatureProps {
 	text: string
@@ -8,6 +8,8 @@ interface FeatureProps {
 	textSize?: string | Array<string>
 	iconBg?: string
 	icon: ReactElement
+	isPhoneNumber?: boolean
+	isEmail?: boolean
 }
 
 const IconText = ({
@@ -16,14 +18,16 @@ const IconText = ({
 	textSize,
 	icon,
 	iconBg,
+	isPhoneNumber,
+	isEmail,
 }: FeatureProps) => {
-	const size = '3rem'
+	const circleSize = '3rem'
 
-	return (
+	const component = (
 		<HStack align={'center'} spacing={'1rem'} alignItems={'center'} my={'2rem'}>
 			<Flex
-				w={size}
-				h={size}
+				w={circleSize}
+				h={circleSize}
 				align={'center'}
 				justify={'center'}
 				rounded={'full'}
@@ -41,6 +45,16 @@ const IconText = ({
 			</Text>
 		</HStack>
 	)
+
+	if (isPhoneNumber) {
+		return <Link href={'tel:' + text}>{component}</Link>
+	}
+
+	if (isEmail) {
+		return <Link href={'mailto:' + text}>{component}</Link>
+	}
+
+	return component
 }
 
 export default IconText
