@@ -2,6 +2,7 @@ import { Button, Text, VStack } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import SiteInformation from '../types/CmsSingleTypes/siteInformation'
+import { FaArrowLeft } from 'react-icons/fa'
 
 type Props = {
 	siteInfo: SiteInformation
@@ -20,6 +21,7 @@ const PageNotFound = () => {
 				<Button
 					color={'white'}
 					backgroundColor={'brand'}
+					leftIcon={<FaArrowLeft />}
 					_hover={{ backgroundColor: 'brandDark' }}
 					onClick={() => router.back()}
 				>
