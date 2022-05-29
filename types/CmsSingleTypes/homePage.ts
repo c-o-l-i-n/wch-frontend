@@ -7,6 +7,8 @@ type HomePage = {
 	primaryCallToActionButtonLink: string
 	secondaryCallToActionButtonText: string
 	secondaryCallToActionButtonLink: string
+	contactFormHeading: string
+	pageBody: string
 }
 
 export default HomePage

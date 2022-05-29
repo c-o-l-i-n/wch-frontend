@@ -1,24 +1,23 @@
-import { Heading, ListItem, Text, UnorderedList } from '@chakra-ui/react'
+import { Box, Heading, ListItem, Stack, UnorderedList } from '@chakra-ui/react'
 import type { GetServerSideProps } from 'next'
 import SiteInformation from '../types/CmsSingleTypes/siteInformation'
-import House from '../types/CmsCollectionTypes/house'
 import Testimonial from '../types/CmsCollectionTypes/testimonial'
 import getData from '../utils/data'
-import { formatPhoneNumber } from '../utils/pipes'
 import Hero from '../components/Hero'
 import Container from '../components/Container'
 import Layout from '../components/Layout'
 import Head from 'next/head'
 import HomePage from '../types/CmsSingleTypes/homePage'
+import Markdown from '../components/Markdown'
+import ContactForm from '../components/ContactForm'
 
 type Props = {
 	homePage: HomePage
-	houses: Array<House>
 	testimonials: Array<Testimonial>
 	siteInfo: SiteInformation
 }
 
-const Home = ({ homePage, houses, testimonials, siteInfo }: Props) => {
+const Home = ({ homePage, testimonials, siteInfo }: Props) => {
 	return (
 		<>
 			<Head>
@@ -27,24 +26,19 @@ const Home = ({ homePage, houses, testimonials, siteInfo }: Props) => {
 			<Layout siteInfo={siteInfo}>
 				<Hero {...homePage} />
 				<Container>
-					<Heading mt={'2rem'}>Houses</Heading>
-					<UnorderedList>
-						{houses.map((house, index) => (
-							<ListItem key={index}>
-								House {index + 1}
-								<UnorderedList>
-									<ListItem>{house.briefDescription}</ListItem>
-									<ListItem>{house.squareFeet} sqft</ListItem>
-									<ListItem>{house.bedrooms} bedrooms</ListItem>
-									<ListItem>{house.wholeBathrooms} whole bathrooms</ListItem>
-									<ListItem>{house.halfBathrooms} half bathrooms</ListItem>
-								</UnorderedList>
-							</ListItem>
-						))}
-					</UnorderedList>
-
+					<Stack direction={['column-reverse', 'row']}>
+						<Box width={['full', '55%']} mt={'3rem'} mr={[0, '4rem']}>
+							<Markdown text={homePage.pageBody} siteInfo={siteInfo} />
+						</Box>
+						<Box width={['full', '45%']}>
+							<ContactForm
+								formHeading={homePage.contactFormHeading}
+								shouldHaveNegativeTopMargin
+							/>
+						</Box>
+					</Stack>
 					<Heading mt={'2rem'}>Testimonials</Heading>
-					<UnorderedList>
+					<UnorderedList mb={'3rem'}>
 						{testimonials.map((testimonial, index) => (
 							<ListItem key={index}>
 								{testimonial.name} from {testimonial.location}:
@@ -54,10 +48,6 @@ const Home = ({ homePage, houses, testimonials, siteInfo }: Props) => {
 							</ListItem>
 						))}
 					</UnorderedList>
-
-					<Heading mt={'2rem'}>Contact Us</Heading>
-					<Text>Email: {siteInfo.email}</Text>
-					<Text mb={'2rem'}>Phone: {formatPhoneNumber(siteInfo.phone)}</Text>
 				</Container>
 			</Layout>
 		</>
@@ -65,15 +55,14 @@ const Home = ({ homePage, houses, testimonials, siteInfo }: Props) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-	const [homePage, houses, testimonials, siteInfo] = await Promise.all([
+	const [homePage, testimonials, siteInfo] = await Promise.all([
 		getData('home-page?populate=*'),
-		getData('houses'),
 		getData('testimonials'),
 		getData('site-information?populate=*'),
 	])
 
 	return {
-		props: { homePage, houses, testimonials, siteInfo },
+		props: { homePage, testimonials, siteInfo },
 	}
 }
 

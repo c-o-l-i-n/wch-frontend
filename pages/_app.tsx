@@ -4,7 +4,7 @@ import Layout from '../components/Layout'
 
 const theme = extendTheme({
 	breakpoints: {
-		sm: '40rem',
+		sm: '48rem',
 	},
 	colors: {
 		brand: '#2a7fff',
