@@ -54,7 +54,7 @@ const Home = ({ homePage, testimonials, siteInfo }: Props) => {
 	)
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
 	const [homePage, testimonials, siteInfo] = await Promise.all([
 		getData('home-page?populate=*'),
 		getData('testimonials'),

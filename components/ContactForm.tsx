@@ -12,7 +12,7 @@ import { ReactNode } from 'react'
 import PhoneNumberInput from './PhoneNumberInput'
 
 type Props = {
-	formHeading: string
+	formHeading?: string
 	shouldHaveNegativeTopMargin?: boolean
 }
 
@@ -53,9 +53,11 @@ const ContactForm = ({ formHeading, shouldHaveNegativeTopMargin }: Props) => {
 	return box(
 		<form onSubmit={handleSubmit}>
 			<VStack spacing={'1rem'}>
-				<Heading fontSize={'1.5rem'} textAlign={'center'} fontWeight={'bold'}>
-					{formHeading}
-				</Heading>
+				{formHeading && (
+					<Heading fontSize={'1.5rem'} textAlign={'center'} fontWeight={'bold'}>
+						{formHeading}
+					</Heading>
+				)}
 
 				<Input
 					type='text'
