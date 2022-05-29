@@ -5,7 +5,7 @@ import { ReactElement } from 'react'
 interface FeatureProps {
 	text: string
 	textColor?: string
-	textSize?: string
+	textSize?: string | Array<string>
 	iconBg?: string
 	icon: ReactElement
 }

@@ -38,7 +38,7 @@ const Contact = ({ contactPage, siteInfo }: Props) => {
 									<FaEnvelope color={theme.colors.brand} size={'1.25rem'} />
 								}
 								text={siteInfo.email}
-								textSize={'1rem'}
+								textSize={['1rem', '1.5rem']}
 							/>
 						</Box>
 						<Box width={['full', '60%']}>
