@@ -1,11 +1,14 @@
+import CmsImage from '../cmsImage'
+
 type House = {
-	thumbnail: string
+	id: number
+	thumbnail: CmsImage
 	briefDescription: string
 	bedrooms: number
 	wholeBathrooms: number
 	halfBathrooms: number
 	squareFeet: number
-	photos: Array<string>
+	photos: Array<CmsImage>
 	detailedDescription: string
 }
 
