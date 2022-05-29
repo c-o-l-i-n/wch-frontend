@@ -23,10 +23,10 @@ const Contact = ({ contactPage, siteInfo }: Props) => {
 			<Layout siteInfo={siteInfo}>
 				<Container>
 					<Stack direction={['column-reverse', 'row']}>
-						<Box width={['full', '55%']} mt={'3rem'} mr={[0, '4rem']}>
+						<Box width={['full', '50%']} mt={'3rem'} mr={[0, '4rem']}>
 							<Markdown text={contactPage.pageBody} siteInfo={siteInfo} />
 						</Box>
-						<Box width={['full', '45%']}>
+						<Box width={['full', '60%']}>
 							<ContactForm />
 						</Box>
 					</Stack>
