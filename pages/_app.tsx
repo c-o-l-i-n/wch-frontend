@@ -2,11 +2,12 @@ import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import { AppProps } from 'next/app'
 import Layout from '../components/Layout'
 
-const theme = extendTheme({
+export const theme = extendTheme({
 	breakpoints: {
 		sm: '48rem',
 	},
 	colors: {
+		brandLight: '#cce0ff',
 		brand: '#2a7fff',
 		brandDark: '#005ce6',
 	},
