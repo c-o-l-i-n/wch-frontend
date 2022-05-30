@@ -10,10 +10,7 @@ import Head from 'next/head'
 import HomePage from '../types/CmsSingleTypes/homePage'
 import Markdown from '../components/Markdown'
 import ContactForm from '../components/ContactForm'
-import IconText from '../components/IconText'
-import { FaPhone } from 'react-icons/fa'
-import { theme } from './_app'
-import { formatPhoneNumber } from '../utils/pipes'
+import Phone from '../components/Phone'
 
 type Props = {
 	homePage: HomePage
@@ -33,10 +30,7 @@ const Home = ({ homePage, testimonials, siteInfo }: Props) => {
 					<Stack direction={['column-reverse', 'row']}>
 						<Box width={['full', '55%']} mt={'3rem'} mr={[0, '4rem']}>
 							<Markdown text={homePage.pageBody} siteInfo={siteInfo} />
-							<IconText
-								icon={<FaPhone color={theme.colors.brand} size={'1.25rem'} />}
-								text={formatPhoneNumber(siteInfo.phone)}
-							/>
+							<Phone siteInfo={siteInfo} />
 						</Box>
 						<Box width={['full', '45%']}>
 							<ContactForm
