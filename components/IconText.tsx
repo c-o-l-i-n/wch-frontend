@@ -24,7 +24,13 @@ const IconText = ({
 	const circleSize = '3rem'
 
 	const component = (
-		<HStack align={'center'} spacing={'1rem'} alignItems={'center'} my={'2rem'}>
+		<HStack
+			as={'a'}
+			align={'center'}
+			spacing={'1rem'}
+			alignItems={'center'}
+			my={'2rem'}
+		>
 			<Flex
 				w={circleSize}
 				h={circleSize}
@@ -47,11 +53,19 @@ const IconText = ({
 	)
 
 	if (isPhoneNumber) {
-		return <Link href={'tel:' + text}>{component}</Link>
+		return (
+			<Link href={'tel:' + text} passHref>
+				{component}
+			</Link>
+		)
 	}
 
 	if (isEmail) {
-		return <Link href={'mailto:' + text}>{component}</Link>
+		return (
+			<Link href={'mailto:' + text} passHref>
+				{component}
+			</Link>
+		)
 	}
 
 	return component

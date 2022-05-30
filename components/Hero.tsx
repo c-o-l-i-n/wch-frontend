@@ -50,8 +50,9 @@ const Hero = ({
 							{heroText}
 						</Heading>
 						<Stack direction={['column', 'row']} spacing={'1rem'}>
-							<Link href={primaryCallToActionButtonLink}>
+							<Link href={primaryCallToActionButtonLink} passHref>
 								<Button
+									as={'a'}
 									bg={'brand'}
 									color={'white'}
 									_hover={{ bg: 'brandDark' }}
@@ -59,8 +60,9 @@ const Hero = ({
 									{primaryCallToActionButtonText}
 								</Button>
 							</Link>
-							<Link href={secondaryCallToActionButtonLink}>
+							<Link href={secondaryCallToActionButtonLink} passHref>
 								<Button
+									as={'a'}
 									bg={'transparent'}
 									color={'whiteAlpha.800'}
 									_hover={{ bg: 'whiteAlpha.400' }}
