@@ -7,15 +7,15 @@ type Props = {
 	siteInfo: SiteInformation
 }
 
-const Phone = ({ siteInfo }: Props) => {
+const Email = ({ siteInfo }: Props) => {
 	return (
 		<IconText
 			icon={<FaEnvelope color={theme.colors.brand} size={'1.25rem'} />}
-			text={siteInfo.email}
+			text={'siteInfo.email'}
 			textSize={['1rem', '1.5rem']}
 			isEmail
 		/>
 	)
 }
 
-export default Phone
+export default Email
