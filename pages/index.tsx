@@ -1,4 +1,12 @@
-import { Box, Heading, ListItem, Stack, UnorderedList } from '@chakra-ui/react'
+import {
+	Box,
+	Heading,
+	ListItem,
+	SimpleGrid,
+	Stack,
+	UnorderedList,
+	VStack,
+} from '@chakra-ui/react'
 import type { GetServerSideProps } from 'next'
 import SiteInformation from '../types/CmsSingleTypes/siteInformation'
 import Testimonial from '../types/CmsCollectionTypes/testimonial'
@@ -11,6 +19,7 @@ import HomePage from '../types/CmsSingleTypes/homePage'
 import Markdown from '../components/Markdown'
 import ContactForm from '../components/ContactForm'
 import Phone from '../components/Phone'
+import TestimonialCard from '../components/TestimonialCard'
 
 type Props = {
 	homePage: HomePage
@@ -39,17 +48,16 @@ const Home = ({ homePage, testimonials, siteInfo }: Props) => {
 							/>
 						</Box>
 					</Stack>
-					<Heading mt={'2rem'}>Testimonials</Heading>
-					<UnorderedList mb={'3rem'}>
+					<Heading mt={'2rem'}>See what our customers are saying</Heading>
+					<VStack spacing={'3rem'} my={'3rem'}>
 						{testimonials.map((testimonial, index) => (
-							<ListItem key={index}>
-								{testimonial.name} from {testimonial.location}:
-								<UnorderedList>
-									<ListItem>{testimonial.text}</ListItem>
-								</UnorderedList>
-							</ListItem>
+							<TestimonialCard
+								key={index}
+								testimonial={testimonial}
+								index={index}
+							/>
 						))}
-					</UnorderedList>
+					</VStack>
 				</Container>
 			</Layout>
 		</>
@@ -59,7 +67,9 @@ const Home = ({ homePage, testimonials, siteInfo }: Props) => {
 export const getServerSideProps: GetServerSideProps = async () => {
 	const [homePage, testimonials, siteInfo] = await Promise.all([
 		getData('home-page?populate=*'),
-		getData('testimonials'),
+		getData(
+			'testimonials?sort=order&pagination[page]=1&pagination[pageSize]=2'
+		),
 		getData('site-information?populate=*'),
 	])
 

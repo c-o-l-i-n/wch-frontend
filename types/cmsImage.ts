@@ -1,10 +1,7 @@
+import CmsImageData from './cmsImageData'
+
 type CmsImage = {
-	data: {
-		attributes: {
-			alternativeText: string
-			url: string
-		}
-	}
+	data: CmsImageData
 }
 
 export default CmsImage

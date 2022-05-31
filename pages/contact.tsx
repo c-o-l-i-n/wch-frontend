@@ -8,7 +8,6 @@ import Head from 'next/head'
 import Markdown from '../components/Markdown'
 import ContactForm from '../components/ContactForm'
 import ContactPage from '../types/CmsSingleTypes/contactPage'
-import Email from '../components/Email'
 import Phone from '../components/Phone'
 
 type Props = {
@@ -28,7 +27,6 @@ const Contact = ({ contactPage, siteInfo }: Props) => {
 						<Box width={['full', '50%']} mr={[0, '4rem']}>
 							<Markdown text={contactPage.pageBody} siteInfo={siteInfo} />
 							<Phone siteInfo={siteInfo} />
-							<Email siteInfo={siteInfo} />
 						</Box>
 						<Box width={['full', '60%']}>
 							<ContactForm />

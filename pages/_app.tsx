@@ -4,13 +4,16 @@ import Layout from '../components/Layout'
 
 export const theme = extendTheme({
 	breakpoints: {
-		sm: '48rem',
+		sm: '58rem',
+		md: '69rem',
+		lg: '80rem',
 	},
 	colors: {
 		brandLight: '#cce0ff',
 		brand: '#2a7fff',
 		brandDark: '#005ce6',
 	},
+	boxShadow: '0 3px 15px #bbb',
 })
 
 const MyApp = ({ Component, pageProps }: AppProps) => {

@@ -29,7 +29,8 @@ const IconText = ({
 			align={'center'}
 			spacing={'1rem'}
 			alignItems={'center'}
-			my={'2rem'}
+			mt={'2rem'}
+			mb={'1rem'}
 		>
 			<Flex
 				w={circleSize}
@@ -54,7 +55,7 @@ const IconText = ({
 
 	if (isPhoneNumber) {
 		return (
-			<Link href={'tel:' + text} passHref>
+			<Link href={'tel:' + text.replace(/\D/g, '')} passHref>
 				{component}
 			</Link>
 		)

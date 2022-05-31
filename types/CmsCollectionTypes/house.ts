@@ -1,4 +1,5 @@
 import CmsImage from '../cmsImage'
+import CmsImageData from '../cmsImageData'
 
 type House = {
 	id: number
@@ -8,7 +9,7 @@ type House = {
 	wholeBathrooms: number
 	halfBathrooms: number
 	squareFeet: number
-	photos: Array<CmsImage>
+	photos: { data: Array<CmsImageData> }
 	detailedDescription: string
 }
 

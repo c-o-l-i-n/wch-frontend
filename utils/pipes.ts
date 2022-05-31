@@ -11,5 +11,5 @@ export const populateShortCodes = (text: string, siteInfo: SiteInformation) =>
 		.replace('[websiteName]', siteInfo.websiteName)
 		.replace('[companyLegalName]', siteInfo.companyLegalName)
 		.replace('[phone]', formatPhoneNumber(siteInfo.phone))
-		.replace('[email]', siteInfo.email)
 		.replace('[location]', siteInfo.location)
+// .replace('[email]', siteInfo.email)

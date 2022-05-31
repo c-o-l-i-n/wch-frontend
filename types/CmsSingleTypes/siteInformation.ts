@@ -6,7 +6,6 @@ type SiteInformation = {
 	websiteName: string
 	companyLegalName: string
 	phone: string
-	email: string
 	location: string
 	footer: string
 }

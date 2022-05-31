@@ -3,6 +3,7 @@ import React from 'react'
 import House from '../types/CmsCollectionTypes/house'
 import { FaBath, FaBed, FaRuler } from 'react-icons/fa'
 import Link from 'next/link'
+import { theme } from '../pages/_app'
 
 type Props = {
 	house: House
@@ -20,19 +21,19 @@ const HouseCard = ({ house }: Props) => {
 	}
 
 	return (
-		<Link href={'/homes/' + house.id} passHref>
+		<Link href={'/our-homes/' + house.id} passHref>
 			<Box
 				as={'a'}
 				rounded={'xl'}
 				p={'1.25rem'}
-				width={['full', 'min-content']}
+				width={'full'}
 				transition={'100ms'}
-				style={{ boxShadow: '0 3px 15px #bbb' }}
+				style={{ boxShadow: theme.boxShadow }}
 				_hover={{ backgroundColor: 'brandLight', cursor: 'pointer' }}
 			>
 				<Box
 					height={192}
-					width={['full', 320]}
+					width={'full'}
 					rounded={'lg'}
 					style={{
 						backgroundImage: `url(${house.thumbnail.data.attributes.url})`,

@@ -26,7 +26,7 @@ const Hero = ({
 			maxHeight={'50rem'}
 			backgroundImage={heroImage.data.attributes.url}
 			backgroundSize={'cover'}
-			backgroundPosition={'center center'}
+			backgroundPosition={'center'}
 		>
 			<VStack
 				w={'full'}
