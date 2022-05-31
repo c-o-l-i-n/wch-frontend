@@ -29,7 +29,7 @@ const HouseDetails = ({ house, siteInfo }: Props) => {
 		bathrooms += ` Bathroom${house.wholeBathrooms === 1 ? '' : 's'}`
 	}
 
-	const iconSpacing = '1rem'
+	const iconSpacing = '0.75rem'
 
 	return (
 		<>
@@ -40,11 +40,11 @@ const HouseDetails = ({ house, siteInfo }: Props) => {
 				<Container>
 					<Carousel photos={house.photos.data} shouldFill />
 					<VStack
-						fontSize={'1.5rem'}
+						fontSize={'1.25rem'}
 						fontWeight={'bold'}
 						alignItems={'flex-start'}
 						lineHeight={'1.15'}
-						spacing={'1rem'}
+						spacing={'0.75rem'}
 					>
 						<HStack spacing={iconSpacing}>
 							<FaBed />
@@ -63,7 +63,9 @@ const HouseDetails = ({ house, siteInfo }: Props) => {
 							</Text>
 						</HStack>
 					</VStack>
-					<Markdown text={house.detailedDescription} siteInfo={siteInfo} />
+					<Box mt={'1.5rem'} mb={'3rem'}>
+						<Markdown text={house.detailedDescription} siteInfo={siteInfo} />
+					</Box>
 				</Container>
 			</Layout>
 		</>
