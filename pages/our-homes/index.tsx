@@ -14,7 +14,7 @@ type Props = {
 }
 
 const OurHomes = ({ houses, siteInfo }: Props) => {
-	const shouldHave2Columns = useMediaQuery('(min-width: 47rem)')
+	const [shouldHave2Columns] = useMediaQuery('(min-width: 45rem)')
 
 	return (
 		<>

@@ -1,4 +1,4 @@
-import { Box, HStack, Text } from '@chakra-ui/react'
+import { Box, HStack, Text, useMediaQuery } from '@chakra-ui/react'
 import React from 'react'
 import House from '../types/CmsCollectionTypes/house'
 import { FaBath, FaBed, FaRuler } from 'react-icons/fa'
@@ -10,6 +10,8 @@ type Props = {
 }
 
 const HouseCard = ({ house }: Props) => {
+	const [shouldHave2Columns] = useMediaQuery('(min-width: 45rem)')
+
 	let bathrooms = house.wholeBathrooms.toString()
 
 	if (house.halfBathrooms) {
@@ -48,7 +50,8 @@ const HouseCard = ({ house }: Props) => {
 					fontWeight={'bold'}
 					color={'brand'}
 					fontSize={'1.1rem'}
-					spacing={'2rem'}
+					spacing={shouldHave2Columns ? '2rem' : 0}
+					justifyContent={shouldHave2Columns ? 'flex-start' : 'space-between'}
 				>
 					<HStack>
 						<FaBed />
