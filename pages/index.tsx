@@ -7,7 +7,7 @@ import {
 	UnorderedList,
 	VStack,
 } from '@chakra-ui/react'
-import type { GetServerSideProps } from 'next'
+import type { GetStaticProps } from 'next'
 import SiteInformation from '../types/CmsSingleTypes/siteInformation'
 import Testimonial from '../types/CmsCollectionTypes/testimonial'
 import getData from '../utils/data'
@@ -64,7 +64,7 @@ const Home = ({ homePage, testimonials, siteInfo }: Props) => {
 	)
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
 	const [homePage, testimonials, siteInfo] = await Promise.all([
 		getData('home-page?populate=*'),
 		getData(

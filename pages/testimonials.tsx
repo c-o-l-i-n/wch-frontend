@@ -1,5 +1,5 @@
 import { Heading, Text, SimpleGrid } from '@chakra-ui/react'
-import { GetServerSideProps } from 'next'
+import { GetStaticProps } from 'next'
 import React from 'react'
 import Container from '../components/Container'
 import Layout from '../components/Layout'
@@ -36,7 +36,7 @@ const testimonials = ({ testimonials, siteInfo }: Props) => {
 	)
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
 	const [testimonials, siteInfo] = await Promise.all([
 		getData('testimonials?sort=order'),
 		getData('site-information?populate=*'),

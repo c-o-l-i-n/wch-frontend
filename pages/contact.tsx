@@ -1,5 +1,5 @@
 import { Box, Stack } from '@chakra-ui/react'
-import type { GetServerSideProps } from 'next'
+import type { GetStaticProps } from 'next'
 import SiteInformation from '../types/CmsSingleTypes/siteInformation'
 import getData from '../utils/data'
 import Container from '../components/Container'
@@ -38,7 +38,7 @@ const Contact = ({ contactPage, siteInfo }: Props) => {
 	)
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
 	const [contactPage, siteInfo] = await Promise.all([
 		getData('contact-page'),
 		getData('site-information?populate=*'),

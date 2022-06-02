@@ -1,5 +1,5 @@
 import { background, Box, HStack, Text, VStack } from '@chakra-ui/react'
-import type { GetServerSideProps } from 'next'
+import type { GetStaticProps, GetStaticPaths } from 'next'
 import Image from 'next/image'
 import SiteInformation from '../../types/CmsSingleTypes/siteInformation'
 import getData from '../../utils/data'
@@ -72,15 +72,28 @@ const HouseDetails = ({ house, siteInfo }: Props) => {
 	)
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-	if (!context.params) {
+export const getStaticPaths: GetStaticPaths = async () => {
+	const houses: Array<House> = await getData('houses')
+
+	return {
+		paths: houses.map((house) => ({
+			params: {
+				id: house.id.toString(),
+			},
+		})),
+		fallback: false,
+	}
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+	if (!params) {
 		return {
 			notFound: true,
 		}
 	}
 
 	const [house, siteInfo] = await Promise.all([
-		getData(`houses/${context.params.id}?populate=*`),
+		getData(`houses/${params.id}?populate=*`),
 		getData('site-information?populate=*'),
 	])
 
