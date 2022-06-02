@@ -8,6 +8,7 @@ type SiteInformation = {
 	phone: string
 	location: string
 	footer: string
+	formspreeContactFormId: string
 }
 
 export default SiteInformation

@@ -9,17 +9,21 @@ import {
 } from '@chakra-ui/react'
 import { useForm, ValidationError } from '@formspree/react'
 import { ReactNode } from 'react'
+import SiteInformation from '../types/CmsSingleTypes/siteInformation'
 import PhoneNumberInput from './PhoneNumberInput'
 
 type Props = {
+	siteInfo: SiteInformation
 	formHeading?: string
 	shouldHaveNegativeTopMargin?: boolean
 }
 
-const ContactForm = ({ formHeading, shouldHaveNegativeTopMargin }: Props) => {
-	const [state, handleSubmit] = useForm(
-		process.env.NEXT_PUBLIC_CONTACT_FORM_ID || ''
-	)
+const ContactForm = ({
+	siteInfo,
+	formHeading,
+	shouldHaveNegativeTopMargin,
+}: Props) => {
+	const [state, handleSubmit] = useForm(siteInfo.formspreeContactFormId)
 
 	const emailRegex =
 		'(?:[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*|"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])'

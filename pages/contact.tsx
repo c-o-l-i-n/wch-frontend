@@ -29,7 +29,7 @@ const Contact = ({ contactPage, siteInfo }: Props) => {
 							<Phone siteInfo={siteInfo} />
 						</Box>
 						<Box width={['full', '60%']}>
-							<ContactForm />
+							<ContactForm siteInfo={siteInfo} />
 						</Box>
 					</Stack>
 				</Container>

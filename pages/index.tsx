@@ -43,6 +43,7 @@ const Home = ({ homePage, testimonials, siteInfo }: Props) => {
 						</Box>
 						<Box width={['full', '45%']}>
 							<ContactForm
+								siteInfo={siteInfo}
 								formHeading={homePage.contactFormHeading}
 								shouldHaveNegativeTopMargin
 							/>
