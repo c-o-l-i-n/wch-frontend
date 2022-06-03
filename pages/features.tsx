@@ -27,13 +27,13 @@ const StandardFeaturesPage = ({ standardFeaturesPage, siteInfo }: Props) => {
 						spacing={[0, '2rem']}
 						mb={'2rem'}
 					>
-						<Box width={['50%', 'full']}>
+						<Box width={'full'}>
 							<Markdown
 								text={standardFeaturesPage.leftColumn}
 								siteInfo={siteInfo}
 							/>
 						</Box>
-						<Box width={['50%', 'full']}>
+						<Box width={'full'}>
 							<Markdown
 								text={standardFeaturesPage.rightColumn}
 								siteInfo={siteInfo}
