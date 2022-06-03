@@ -1,7 +1,7 @@
 import { Box, Stack, Image } from '@chakra-ui/react'
 import SiteInformation from '../types/CmsSingleTypes/siteInformation'
 import Container from './Container'
-import Markdown from './Markdown'
+import CmsRichText from './CmsRichText'
 
 type Props = {
 	siteInfo: SiteInformation
@@ -16,7 +16,7 @@ const Footer = ({ siteInfo }: Props) => {
 					spacing='2rem'
 				>
 					<Box textAlign={['center', 'left']}>
-						<Markdown text={siteInfo.footer} siteInfo={siteInfo} />
+						<CmsRichText text={siteInfo.footer} siteInfo={siteInfo} />
 					</Box>
 					<Image
 						src='/images/equal-housing.svg'

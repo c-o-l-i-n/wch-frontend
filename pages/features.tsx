@@ -4,7 +4,7 @@ import getData from '../utils/data'
 import Container from '../components/Container'
 import Layout from '../components/Layout'
 import Head from 'next/head'
-import Markdown from '../components/Markdown'
+import CmsRichText from '../components/CmsRichText'
 import TwoColumnPage from '../types/CmsSingleTypes/twoColumnPage'
 import { Box, Stack } from '@chakra-ui/react'
 
@@ -21,20 +21,23 @@ const StandardFeaturesPage = ({ standardFeaturesPage, siteInfo }: Props) => {
 			</Head>
 			<Layout siteInfo={siteInfo}>
 				<Container>
-					<Markdown text={standardFeaturesPage.pageTop} siteInfo={siteInfo} />
+					<CmsRichText
+						text={standardFeaturesPage.pageTop}
+						siteInfo={siteInfo}
+					/>
 					<Stack
 						direction={['column', 'row']}
 						spacing={[0, '2rem']}
 						mb={'2rem'}
 					>
 						<Box width={'full'}>
-							<Markdown
+							<CmsRichText
 								text={standardFeaturesPage.leftColumn}
 								siteInfo={siteInfo}
 							/>
 						</Box>
 						<Box width={'full'}>
-							<Markdown
+							<CmsRichText
 								text={standardFeaturesPage.rightColumn}
 								siteInfo={siteInfo}
 							/>

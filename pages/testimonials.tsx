@@ -4,7 +4,7 @@ import Head from 'next/head'
 import React from 'react'
 import Container from '../components/Container'
 import Layout from '../components/Layout'
-import Markdown from '../components/Markdown'
+import CmsRichText from '../components/CmsRichText'
 import TestimonialCard from '../components/TestimonialCard'
 import Testimonial from '../types/CmsCollectionTypes/testimonial'
 import SimplePage from '../types/CmsSingleTypes/simplePage'
@@ -38,7 +38,7 @@ const TestimonialsPage = ({
 			</Head>
 			<Layout siteInfo={siteInfo}>
 				<Container>
-					<Markdown text={testimonialsPage.pageBody} siteInfo={siteInfo} />
+					<CmsRichText text={testimonialsPage.pageBody} siteInfo={siteInfo} />
 					<Stack direction={['column', 'row']} spacing={'3rem'} my={'3rem'}>
 						{splitInHalf(testimonials).map((half, index) => (
 							<VStack key={index} spacing={'3rem'} width={'full'}>

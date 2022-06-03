@@ -1,22 +1,13 @@
-import {
-	Box,
-	Heading,
-	ListItem,
-	SimpleGrid,
-	Stack,
-	UnorderedList,
-	VStack,
-} from '@chakra-ui/react'
+import { Box, Heading, Stack, VStack } from '@chakra-ui/react'
 import type { GetStaticProps } from 'next'
 import SiteInformation from '../types/CmsSingleTypes/siteInformation'
-import Testimonial from '../types/CmsCollectionTypes/testimonial'
 import getData from '../utils/data'
 import Hero from '../components/Hero'
 import Container from '../components/Container'
 import Layout from '../components/Layout'
 import Head from 'next/head'
 import HomePage from '../types/CmsSingleTypes/homePage'
-import Markdown from '../components/Markdown'
+import CmsRichText from '../components/CmsRichText'
 import ContactForm from '../components/ContactForm'
 import Phone from '../components/Phone'
 import TestimonialCard from '../components/TestimonialCard'
@@ -37,7 +28,7 @@ const HomePage = ({ homePage, siteInfo }: Props) => {
 				<Container>
 					<Stack direction={['column-reverse', 'row']}>
 						<Box width={['full', '55%']} mt={'3rem'} mr={[0, '4rem']}>
-							<Markdown text={homePage.pageBody} siteInfo={siteInfo} />
+							<CmsRichText text={homePage.pageBody} siteInfo={siteInfo} />
 							<Phone siteInfo={siteInfo} />
 						</Box>
 						<Box width={['full', '45%']}>

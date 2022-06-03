@@ -7,7 +7,7 @@ import Layout from '../../components/Layout'
 import Head from 'next/head'
 import House from '../../types/CmsCollectionTypes/house'
 import HouseCard from '../../components/HouseCard'
-import Markdown from '../../components/Markdown'
+import CmsRichText from '../../components/CmsRichText'
 import SimplePage from '../../types/CmsSingleTypes/simplePage'
 
 type Props = {
@@ -27,7 +27,7 @@ const OurHomes = ({ ourHomesPage, houses, siteInfo }: Props) => {
 			<Layout siteInfo={siteInfo}>
 				<Container>
 					<Box mb={'2rem'}>
-						<Markdown text={ourHomesPage.pageBody} siteInfo={siteInfo} />
+						<CmsRichText text={ourHomesPage.pageBody} siteInfo={siteInfo} />
 					</Box>
 					<SimpleGrid
 						w={'full'}

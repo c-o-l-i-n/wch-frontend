@@ -4,7 +4,7 @@ import getData from '../utils/data'
 import Container from '../components/Container'
 import Layout from '../components/Layout'
 import Head from 'next/head'
-import Markdown from '../components/Markdown'
+import CmsRichText from '../components/CmsRichText'
 import SimplePage from '../types/CmsSingleTypes/simplePage'
 import { Box } from '@chakra-ui/react'
 
@@ -22,7 +22,7 @@ const AboutUsPage = ({ aboutUsPage, siteInfo }: Props) => {
 			<Layout siteInfo={siteInfo}>
 				<Container>
 					<Box mb={'2rem'}>
-						<Markdown text={aboutUsPage.pageBody} siteInfo={siteInfo} />
+						<CmsRichText text={aboutUsPage.pageBody} siteInfo={siteInfo} />
 					</Box>
 				</Container>
 			</Layout>

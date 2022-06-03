@@ -5,7 +5,7 @@ import getData from '../utils/data'
 import Container from '../components/Container'
 import Layout from '../components/Layout'
 import Head from 'next/head'
-import Markdown from '../components/Markdown'
+import CmsRichText from '../components/CmsRichText'
 import ContactForm from '../components/ContactForm'
 import SimplePage from '../types/CmsSingleTypes/simplePage'
 import Phone from '../components/Phone'
@@ -25,7 +25,7 @@ const ContactUsPage = ({ contactPage, siteInfo }: Props) => {
 				<Container>
 					<Stack direction={['column', 'row']} mt={[0, '2rem']} mb={'3rem'}>
 						<Box width={['full', '50%']} mr={[0, '4rem']}>
-							<Markdown text={contactPage.pageBody} siteInfo={siteInfo} />
+							<CmsRichText text={contactPage.pageBody} siteInfo={siteInfo} />
 							<Phone siteInfo={siteInfo} />
 						</Box>
 						<Box width={['full', '60%']}>

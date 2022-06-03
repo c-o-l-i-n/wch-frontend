@@ -1,6 +1,5 @@
-import { background, Box, HStack, Text, VStack } from '@chakra-ui/react'
+import { Box, HStack, Text, VStack } from '@chakra-ui/react'
 import type { GetStaticProps, GetStaticPaths } from 'next'
-import Image from 'next/image'
 import SiteInformation from '../../types/CmsSingleTypes/siteInformation'
 import getData from '../../utils/data'
 import Container from '../../components/Container'
@@ -8,10 +7,9 @@ import Layout from '../../components/Layout'
 import Head from 'next/head'
 import House from '../../types/CmsCollectionTypes/house'
 import { FaBath, FaBed, FaRuler } from 'react-icons/fa'
-import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/react-splide/css'
 import Carousel from '../../components/Carousel'
-import Markdown from '../../components/Markdown'
+import CmsRichText from '../../components/CmsRichText'
 
 type Props = {
 	house: House
@@ -64,7 +62,7 @@ const HouseDetails = ({ house, siteInfo }: Props) => {
 						</HStack>
 					</VStack>
 					<Box mt={'1.5rem'} mb={'3rem'}>
-						<Markdown text={house.detailedDescription} siteInfo={siteInfo} />
+						<CmsRichText text={house.detailedDescription} siteInfo={siteInfo} />
 					</Box>
 				</Container>
 			</Layout>
