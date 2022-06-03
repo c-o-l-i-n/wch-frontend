@@ -5,10 +5,11 @@ import Container from '../components/Container'
 import Layout from '../components/Layout'
 import Head from 'next/head'
 import Markdown from '../components/Markdown'
-import SimplePage from '../types/CmsSingleTypes/simplePage'
+import TwoColumnPage from '../types/CmsSingleTypes/twoColumnPage'
+import { Box, Stack } from '@chakra-ui/react'
 
 type Props = {
-	standardFeaturesPage: SimplePage
+	standardFeaturesPage: TwoColumnPage
 	siteInfo: SiteInformation
 }
 
@@ -20,7 +21,25 @@ const StandardFeaturesPage = ({ standardFeaturesPage, siteInfo }: Props) => {
 			</Head>
 			<Layout siteInfo={siteInfo}>
 				<Container>
-					<Markdown text={standardFeaturesPage.pageBody} siteInfo={siteInfo} />
+					<Markdown text={standardFeaturesPage.pageTop} siteInfo={siteInfo} />
+					<Stack
+						direction={['column', 'row']}
+						spacing={[0, '2rem']}
+						mb={'2rem'}
+					>
+						<Box width={['50%', 'full']}>
+							<Markdown
+								text={standardFeaturesPage.leftColumn}
+								siteInfo={siteInfo}
+							/>
+						</Box>
+						<Box width={['50%', 'full']}>
+							<Markdown
+								text={standardFeaturesPage.rightColumn}
+								siteInfo={siteInfo}
+							/>
+						</Box>
+					</Stack>
 				</Container>
 			</Layout>
 		</>
