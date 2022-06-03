@@ -22,11 +22,11 @@ const TestimonialsPage = ({
 	testimonials,
 	siteInfo,
 }: Props) => {
-	const splitInHalf = (list: Array<any>) => {
-		const half = Math.ceil(testimonials.length / 2)
+	const splitInHalf = (list: Array<Testimonial>) => {
+		const half = Math.ceil(list.length / 2)
 
-		const firstHalf = testimonials.slice(0, half)
-		const secondHalf = testimonials.slice(-half)
+		const firstHalf = list.slice(0, half)
+		const secondHalf = list.slice(half)
 
 		return [firstHalf, secondHalf]
 	}
