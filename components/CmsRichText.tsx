@@ -11,15 +11,28 @@ type Props = {
 }
 
 const CmsRichText = ({ text, siteInfo }: Props) => {
+	const isExternalLink = (url: string) => {
+		if (!process.browser) {
+			return url.startsWith('http')
+		}
+
+		const tmp = document.createElement('a')
+		tmp.href = url
+		return tmp.host !== window.location.host
+	}
+
 	return (
 		<Box className={styles.resetCSS}>
 			{parse(populateShortCodes(text, siteInfo), {
 				// replace <a> tags with Next <Link> components
 				replace: (domNode) => {
 					if (domNode instanceof Element && domNode.name === 'a') {
+						const url = domNode.attribs.href
 						return (
-							<Link href={domNode.attribs.href} passHref>
-								<a>{domToReact(domNode.children)}</a>
+							<Link href={url} passHref>
+								<a target={isExternalLink(url) ? '_blank' : undefined}>
+									{domToReact(domNode.children)}
+								</a>
 							</Link>
 						)
 					}
