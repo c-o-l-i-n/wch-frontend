@@ -6,6 +6,7 @@ import Layout from '../components/Layout'
 import Head from 'next/head'
 import Markdown from '../components/Markdown'
 import SimplePage from '../types/CmsSingleTypes/simplePage'
+import { Box } from '@chakra-ui/react'
 
 type Props = {
 	aboutUsPage: SimplePage
@@ -20,7 +21,9 @@ const AboutUsPage = ({ aboutUsPage, siteInfo }: Props) => {
 			</Head>
 			<Layout siteInfo={siteInfo}>
 				<Container>
-					<Markdown text={aboutUsPage.pageBody} siteInfo={siteInfo} />
+					<Box mb={'2rem'}>
+						<Markdown text={aboutUsPage.pageBody} siteInfo={siteInfo} />
+					</Box>
 				</Container>
 			</Layout>
 		</>

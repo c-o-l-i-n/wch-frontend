@@ -1,4 +1,4 @@
-import { Heading, SimpleGrid, useMediaQuery } from '@chakra-ui/react'
+import { Box, Heading, SimpleGrid, useMediaQuery } from '@chakra-ui/react'
 import type { GetStaticProps } from 'next'
 import SiteInformation from '../../types/CmsSingleTypes/siteInformation'
 import getData from '../../utils/data'
@@ -26,7 +26,9 @@ const OurHomes = ({ ourHomesPage, houses, siteInfo }: Props) => {
 			</Head>
 			<Layout siteInfo={siteInfo}>
 				<Container>
-					<Markdown text={ourHomesPage.pageBody} siteInfo={siteInfo} />
+					<Box mb={'2rem'}>
+						<Markdown text={ourHomesPage.pageBody} siteInfo={siteInfo} />
+					</Box>
 					<SimpleGrid
 						w={'full'}
 						columns={[shouldHave2Columns ? 2 : 1, 2, 3]}
