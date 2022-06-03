@@ -7,13 +7,16 @@ import Layout from '../../components/Layout'
 import Head from 'next/head'
 import House from '../../types/CmsCollectionTypes/house'
 import HouseCard from '../../components/HouseCard'
+import Markdown from '../../components/Markdown'
+import SimplePage from '../../types/CmsSingleTypes/simplePage'
 
 type Props = {
+	ourHomesPage: SimplePage
 	houses: Array<House>
 	siteInfo: SiteInformation
 }
 
-const OurHomes = ({ houses, siteInfo }: Props) => {
+const OurHomes = ({ ourHomesPage, houses, siteInfo }: Props) => {
 	const [shouldHave2Columns] = useMediaQuery('(min-width: 45rem)')
 
 	return (
@@ -23,9 +26,7 @@ const OurHomes = ({ houses, siteInfo }: Props) => {
 			</Head>
 			<Layout siteInfo={siteInfo}>
 				<Container>
-					<Heading mt={[0, '1rem']} mb={['1rem', '2rem']}>
-						Our Homes
-					</Heading>
+					<Markdown text={ourHomesPage.pageBody} siteInfo={siteInfo} />
 					<SimpleGrid
 						w={'full'}
 						columns={[shouldHave2Columns ? 2 : 1, 2, 3]}
@@ -44,13 +45,14 @@ const OurHomes = ({ houses, siteInfo }: Props) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-	const [houses, siteInfo] = await Promise.all([
+	const [ourHomesPage, houses, siteInfo] = await Promise.all([
+		getData('our-homes-page'),
 		getData('houses?populate=thumbnail'),
 		getData('site-information?populate=*'),
 	])
 
 	return {
-		props: { houses, siteInfo },
+		props: { ourHomesPage, houses, siteInfo },
 	}
 }
 

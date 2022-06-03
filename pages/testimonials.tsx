@@ -3,25 +3,24 @@ import { GetStaticProps } from 'next'
 import React from 'react'
 import Container from '../components/Container'
 import Layout from '../components/Layout'
+import Markdown from '../components/Markdown'
 import TestimonialCard from '../components/TestimonialCard'
 import Testimonial from '../types/CmsCollectionTypes/testimonial'
+import SimplePage from '../types/CmsSingleTypes/simplePage'
 import SiteInformation from '../types/CmsSingleTypes/siteInformation'
 import getData from '../utils/data'
 
 type Props = {
+	testimonialsPage: SimplePage
 	testimonials: Array<Testimonial>
 	siteInfo: SiteInformation
 }
 
-const testimonials = ({ testimonials, siteInfo }: Props) => {
+const testimonials = ({ testimonialsPage, testimonials, siteInfo }: Props) => {
 	return (
 		<Layout siteInfo={siteInfo}>
 			<Container>
-				<Heading>Testimonials</Heading>
-				<Text>
-					We are Stark County’s premiere custom home builder, but don’t take our
-					word for it. See what our customers say about us!
-				</Text>
+				<Markdown text={testimonialsPage.pageBody} siteInfo={siteInfo} />
 				<SimpleGrid columns={[1, 2]} spacing={'3rem'} my={'3rem'}>
 					{testimonials.map((testimonial, index) => (
 						<TestimonialCard
@@ -37,13 +36,14 @@ const testimonials = ({ testimonials, siteInfo }: Props) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-	const [testimonials, siteInfo] = await Promise.all([
+	const [testimonialsPage, testimonials, siteInfo] = await Promise.all([
+		getData('testimonials-page'),
 		getData('testimonials?sort=order'),
 		getData('site-information?populate=*'),
 	])
 
 	return {
-		props: { testimonials, siteInfo },
+		props: { testimonialsPage, testimonials, siteInfo },
 	}
 }
 

@@ -7,11 +7,11 @@ import Layout from '../components/Layout'
 import Head from 'next/head'
 import Markdown from '../components/Markdown'
 import ContactForm from '../components/ContactForm'
-import ContactPage from '../types/CmsSingleTypes/contactPage'
+import SimplePage from '../types/CmsSingleTypes/simplePage'
 import Phone from '../components/Phone'
 
 type Props = {
-	contactPage: ContactPage
+	contactPage: SimplePage
 	siteInfo: SiteInformation
 }
 
