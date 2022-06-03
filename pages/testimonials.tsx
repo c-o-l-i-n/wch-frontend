@@ -1,4 +1,4 @@
-import { Heading, Text, SimpleGrid } from '@chakra-ui/react'
+import { Stack, VStack } from '@chakra-ui/react'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import React from 'react'
@@ -22,6 +22,15 @@ const TestimonialsPage = ({
 	testimonials,
 	siteInfo,
 }: Props) => {
+	const splitInHalf = (list: Array<any>) => {
+		const half = Math.ceil(testimonials.length / 2)
+
+		const firstHalf = testimonials.slice(0, half)
+		const secondHalf = testimonials.slice(-half)
+
+		return [firstHalf, secondHalf]
+	}
+
 	return (
 		<>
 			<Head>
@@ -30,15 +39,19 @@ const TestimonialsPage = ({
 			<Layout siteInfo={siteInfo}>
 				<Container>
 					<Markdown text={testimonialsPage.pageBody} siteInfo={siteInfo} />
-					<SimpleGrid columns={[1, 2]} spacing={'3rem'} my={'3rem'}>
-						{testimonials.map((testimonial, index) => (
-							<TestimonialCard
-								key={index}
-								testimonial={testimonial}
-								index={index}
-							/>
+					<Stack direction={['column', 'row']} spacing={'3rem'} my={'3rem'}>
+						{splitInHalf(testimonials).map((half, index) => (
+							<VStack key={index} spacing={'3rem'} width={'full'}>
+								{half.map((testimonial, index) => (
+									<TestimonialCard
+										key={index}
+										testimonial={testimonial}
+										index={index}
+									/>
+								))}
+							</VStack>
 						))}
-					</SimpleGrid>
+					</Stack>
 				</Container>
 			</Layout>
 		</>
