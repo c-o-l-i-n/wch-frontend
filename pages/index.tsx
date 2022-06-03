@@ -23,11 +23,10 @@ import TestimonialCard from '../components/TestimonialCard'
 
 type Props = {
 	homePage: HomePage
-	testimonials: Array<Testimonial>
 	siteInfo: SiteInformation
 }
 
-const Home = ({ homePage, testimonials, siteInfo }: Props) => {
+const Home = ({ homePage, siteInfo }: Props) => {
 	return (
 		<>
 			<Head>
@@ -51,13 +50,15 @@ const Home = ({ homePage, testimonials, siteInfo }: Props) => {
 					</Stack>
 					<Heading mt={'2rem'}>See what our customers are saying</Heading>
 					<VStack spacing={'3rem'} my={'3rem'}>
-						{testimonials.map((testimonial, index) => (
-							<TestimonialCard
-								key={index}
-								testimonial={testimonial}
-								index={index}
-							/>
-						))}
+						{homePage.featuredTestimonials.data.map(
+							(testimonialData, index) => (
+								<TestimonialCard
+									key={index}
+									testimonial={testimonialData.attributes}
+									index={index}
+								/>
+							)
+						)}
 					</VStack>
 				</Container>
 			</Layout>
@@ -66,16 +67,13 @@ const Home = ({ homePage, testimonials, siteInfo }: Props) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-	const [homePage, testimonials, siteInfo] = await Promise.all([
+	const [homePage, siteInfo] = await Promise.all([
 		getData('home-page?populate=*'),
-		getData(
-			'testimonials?sort=order&pagination[page]=1&pagination[pageSize]=2'
-		),
 		getData('site-information?populate=*'),
 	])
 
 	return {
-		props: { homePage, testimonials, siteInfo },
+		props: { homePage, siteInfo },
 	}
 }
 
