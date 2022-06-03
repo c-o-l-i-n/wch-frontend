@@ -39,7 +39,7 @@ const HomePage = ({ homePage, siteInfo }: Props) => {
 							/>
 						</Box>
 					</Stack>
-					<Heading mt={'2rem'}>See what our customers are saying</Heading>
+					<Heading mt={'2rem'}>{homePage.featuredTestimonialsHeading}</Heading>
 					<VStack spacing={'3rem'} my={'3rem'}>
 						{homePage.featuredTestimonials.data.map(
 							(testimonialData, index) => (

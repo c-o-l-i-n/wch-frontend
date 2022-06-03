@@ -8,8 +8,9 @@ type HomePage = {
 	primaryCallToActionButtonLink: string
 	secondaryCallToActionButtonText: string
 	secondaryCallToActionButtonLink: string
-	contactFormHeading: string
 	pageBody: string
+	contactFormHeading: string
+	featuredTestimonialsHeading: string
 	featuredTestimonials: { data: Array<{ attributes: Testimonial }> }
 }
 
