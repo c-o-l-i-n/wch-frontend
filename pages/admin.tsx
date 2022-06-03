@@ -1,10 +1,10 @@
 import Head from 'next/head'
 
-const Admin = () => {
+const AdminPage = () => {
 	return (
 		<>
 			<Head>
-				<title>CMS</title>
+				<title>WCH CMS</title>
 			</Head>
 			<iframe
 				src='https://williamscustomhomes.herokuapp.com/admin/content-manager'
@@ -15,4 +15,4 @@ const Admin = () => {
 	)
 }
 
-export default Admin
+export default AdminPage

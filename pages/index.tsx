@@ -26,7 +26,7 @@ type Props = {
 	siteInfo: SiteInformation
 }
 
-const Home = ({ homePage, siteInfo }: Props) => {
+const HomePage = ({ homePage, siteInfo }: Props) => {
 	return (
 		<>
 			<Head>
@@ -77,4 +77,4 @@ export const getStaticProps: GetStaticProps = async () => {
 	}
 }
 
-export default Home
+export default HomePage

@@ -15,11 +15,11 @@ type Props = {
 	siteInfo: SiteInformation
 }
 
-const Contact = ({ contactPage, siteInfo }: Props) => {
+const ContactUsPage = ({ contactPage, siteInfo }: Props) => {
 	return (
 		<>
 			<Head>
-				<title>Contact | {siteInfo.websiteName}</title>
+				<title>Contact Us | {siteInfo.websiteName}</title>
 			</Head>
 			<Layout siteInfo={siteInfo}>
 				<Container>
@@ -49,4 +49,4 @@ export const getStaticProps: GetStaticProps = async () => {
 	}
 }
 
-export default Contact
+export default ContactUsPage

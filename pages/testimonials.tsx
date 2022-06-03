@@ -1,5 +1,6 @@
 import { Heading, Text, SimpleGrid } from '@chakra-ui/react'
 import { GetStaticProps } from 'next'
+import Head from 'next/head'
 import React from 'react'
 import Container from '../components/Container'
 import Layout from '../components/Layout'
@@ -16,22 +17,31 @@ type Props = {
 	siteInfo: SiteInformation
 }
 
-const testimonials = ({ testimonialsPage, testimonials, siteInfo }: Props) => {
+const TestimonialsPage = ({
+	testimonialsPage,
+	testimonials,
+	siteInfo,
+}: Props) => {
 	return (
-		<Layout siteInfo={siteInfo}>
-			<Container>
-				<Markdown text={testimonialsPage.pageBody} siteInfo={siteInfo} />
-				<SimpleGrid columns={[1, 2]} spacing={'3rem'} my={'3rem'}>
-					{testimonials.map((testimonial, index) => (
-						<TestimonialCard
-							key={index}
-							testimonial={testimonial}
-							index={index}
-						/>
-					))}
-				</SimpleGrid>
-			</Container>
-		</Layout>
+		<>
+			<Head>
+				<title>Testimonials | {siteInfo.websiteName}</title>
+			</Head>
+			<Layout siteInfo={siteInfo}>
+				<Container>
+					<Markdown text={testimonialsPage.pageBody} siteInfo={siteInfo} />
+					<SimpleGrid columns={[1, 2]} spacing={'3rem'} my={'3rem'}>
+						{testimonials.map((testimonial, index) => (
+							<TestimonialCard
+								key={index}
+								testimonial={testimonial}
+								index={index}
+							/>
+						))}
+					</SimpleGrid>
+				</Container>
+			</Layout>
+		</>
 	)
 }
 
@@ -47,4 +57,4 @@ export const getStaticProps: GetStaticProps = async () => {
 	}
 }
 
-export default testimonials
+export default TestimonialsPage
