@@ -60,16 +60,18 @@ const Hero = ({
 									{primaryCallToActionButtonText}
 								</Button>
 							</Link>
-							<Link href={secondaryCallToActionButtonLink} passHref>
-								<Button
-									as={'a'}
-									bg={'transparent'}
-									color={'whiteAlpha.800'}
-									_hover={{ bg: 'whiteAlpha.400' }}
-								>
-									{secondaryCallToActionButtonText}
-								</Button>
-							</Link>
+							{secondaryCallToActionButtonText && (
+								<Link href={secondaryCallToActionButtonLink} passHref>
+									<Button
+										as={'a'}
+										bg={'transparent'}
+										color={'whiteAlpha.800'}
+										_hover={{ bg: 'whiteAlpha.400' }}
+									>
+										{secondaryCallToActionButtonText}
+									</Button>
+								</Link>
+							)}
 						</Stack>
 					</Stack>
 				</Container>
