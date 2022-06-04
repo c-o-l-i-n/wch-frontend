@@ -1,7 +1,7 @@
 import { Box, HStack, Text, useMediaQuery } from '@chakra-ui/react'
 import React from 'react'
 import House from '../types/CmsCollectionTypes/house'
-import { FaBath, FaBed, FaRuler } from 'react-icons/fa'
+import { FaBath, FaBed, FaHome, FaRuler } from 'react-icons/fa'
 import Link from 'next/link'
 import { theme } from '../pages/_app'
 
@@ -37,12 +37,28 @@ const HouseCard = ({ house }: Props) => {
 					height={192}
 					width={'full'}
 					rounded={'lg'}
-					style={{
-						backgroundImage: `url(${house.thumbnail.data.attributes.url})`,
-						backgroundPosition: 'center',
-						backgroundSize: 'cover',
-					}}
-				/>
+					backgroundImage={`url(${
+						house.thumbnail.data ? house.thumbnail.data.attributes.url : '' //siteInfo.favicon.data.attributes.url
+					})`}
+					backgroundPosition={'center'}
+					backgroundColor={'#ddd'}
+					backgroundSize={house.thumbnail.data ? 'cover' : '4rem'}
+					backgroundRepeat={'no-repeat'}
+					position={'relative'}
+				>
+					{house.thumbnail.data ? null : (
+						<FaHome
+							fontSize={'3rem'}
+							color={'#bbb'}
+							style={{
+								position: 'absolute',
+								top: '50%',
+								left: '50%',
+								transform: 'translate(-50%, -50%)',
+							}}
+						/>
+					)}
+				</Box>
 
 				<HStack
 					mt={'0.75rem'}
