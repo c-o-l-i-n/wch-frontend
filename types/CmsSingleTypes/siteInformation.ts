@@ -1,4 +1,5 @@
 import CmsImage from '../cmsImage'
+import NavbarItem from '../navbarItem'
 
 type SiteInformation = {
 	logo: CmsImage
@@ -7,6 +8,7 @@ type SiteInformation = {
 	companyLegalName: string
 	phone: string
 	location: string
+	navbarItems: Array<NavbarItem>
 	footer: string
 	formspreeContactFormId: string
 }

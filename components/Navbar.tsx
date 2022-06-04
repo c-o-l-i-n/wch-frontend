@@ -14,6 +14,7 @@ import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import Container from './Container'
 import Link from 'next/link'
 import SiteInformation from '../types/CmsSingleTypes/siteInformation'
+import NavbarItem from '../types/navbarItem'
 
 type Props = {
 	siteInfo: SiteInformation
@@ -48,7 +49,7 @@ const Navbar = ({ siteInfo }: Props) => {
 						</Link>
 
 						<Flex display={['none', 'flex']} ml='auto' h='100%'>
-							<DesktopNav />
+							<DesktopNav navbarItems={siteInfo.navbarItems} />
 						</Flex>
 					</Flex>
 
@@ -70,59 +71,65 @@ const Navbar = ({ siteInfo }: Props) => {
 				</Flex>
 
 				<Collapse in={isOpen} animateOpacity>
-					<MobileNav />
+					<MobileNav navbarItems={siteInfo.navbarItems} />
 				</Collapse>
 			</Container>
 		</Box>
 	)
 }
 
-const DesktopNav = () => {
+type NavbarItemsProps = {
+	navbarItems: Array<NavbarItem>
+}
+
+const DesktopNav = ({ navbarItems }: NavbarItemsProps) => {
 	return (
 		<HStack spacing={0}>
-			{NAV_ITEMS.map((navItem) => (
-				<Link key={navItem.label} href={navItem.href ?? '#'} passHref>
-					<Flex
-						as={'a'}
-						h='100%'
-						alignItems='center'
-						px='1rem'
-						_hover={{
-							textDecoration: 'none',
-							backgroundColor: 'blackAlpha.100',
-							cursor: 'pointer',
-						}}
-					>
-						<Flex h='100%' alignItems='center'>
-							{navItem.label}
+			{navbarItems
+				.filter((navbarItem) => navbarItem.visible)
+				.map((navbarItem) => (
+					<Link key={navbarItem.label} href={navbarItem.url} passHref>
+						<Flex
+							as={'a'}
+							h='100%'
+							alignItems='center'
+							px='1rem'
+							_hover={{
+								textDecoration: 'none',
+								backgroundColor: 'blackAlpha.100',
+								cursor: 'pointer',
+							}}
+						>
+							<Flex h='100%' alignItems='center'>
+								{navbarItem.label}
+							</Flex>
 						</Flex>
-					</Flex>
-				</Link>
-			))}
+					</Link>
+				))}
 		</HStack>
 	)
 }
 
-const MobileNav = () => {
+const MobileNav = ({ navbarItems }: NavbarItemsProps) => {
 	return (
 		<Stack
 			bg={useColorModeValue('white', 'blackAlpha.800')}
 			p={4}
 			display={{ md: 'none' }}
 		>
-			{NAV_ITEMS.map((navItem) => (
-				<MobileNavItem key={navItem.label} {...navItem} />
-			))}
+			{navbarItems
+				.filter((navbarItem) => navbarItem.visible)
+				.map((navbarItem) => (
+					<MobileNavbarItem key={navbarItem.label} {...navbarItem} />
+				))}
 		</Stack>
 	)
 }
 
-const MobileNavItem = ({ label, children, href }: NavItem) => {
-	const { onToggle } = useDisclosure()
-
+const MobileNavbarItem = ({ label, url }: NavbarItem) => {
 	return (
-		<Stack spacing={4} onClick={children && onToggle}>
-			<Link key={label} href={href ?? '#'} passHref>
+		<Stack spacing={4}>
+			<Link key={label} href={url} passHref>
 				<Flex
 					as={'a'}
 					py={2}
@@ -139,35 +146,5 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
 		</Stack>
 	)
 }
-
-interface NavItem {
-	label: string
-	subLabel?: string
-	children?: Array<NavItem>
-	href?: string
-}
-
-const NAV_ITEMS: Array<NavItem> = [
-	{
-		label: 'About Us',
-		href: '/about',
-	},
-	{
-		label: 'Our Homes',
-		href: '/our-homes',
-	},
-	{
-		label: 'Standard Features',
-		href: '/features',
-	},
-	{
-		label: 'Testimonials',
-		href: '/testimonials',
-	},
-	{
-		label: 'Contact Us',
-		href: '/contact',
-	},
-]
 
 export default Navbar
