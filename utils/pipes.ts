@@ -7,9 +7,9 @@ export const formatPhoneNumber = (phoneNumber: string) =>
 
 export const populateShortCodes = (text: string, siteInfo: SiteInformation) =>
 	text
-		.replace('[currentYear]', new Date().getFullYear().toString())
-		.replace('[websiteName]', siteInfo.websiteName)
-		.replace('[companyLegalName]', siteInfo.companyLegalName)
+		.replace('[current_year]', new Date().getFullYear().toString())
+		.replace('[website_name]', siteInfo.websiteName)
+		.replace('[company_legal_name]', siteInfo.companyLegalName)
 		.replace('[phone]', formatPhoneNumber(siteInfo.phone))
 		.replace('[location]', siteInfo.location)
 // .replace('[email]', siteInfo.email)
