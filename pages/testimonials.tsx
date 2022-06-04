@@ -34,7 +34,9 @@ const TestimonialsPage = ({
 	return (
 		<>
 			<Head>
-				<title>Testimonials | {siteInfo.websiteName}</title>
+				<title>
+					{testimonialsPage.title} | {siteInfo.websiteName}
+				</title>
 			</Head>
 			<Layout siteInfo={siteInfo}>
 				<Container>

@@ -22,7 +22,9 @@ const OurHomes = ({ ourHomesPage, houses, siteInfo }: Props) => {
 	return (
 		<>
 			<Head>
-				<title>Our Homes | {siteInfo.websiteName}</title>
+				<title>
+					{ourHomesPage.title} | {siteInfo.websiteName}
+				</title>
 			</Head>
 			<Layout siteInfo={siteInfo}>
 				<Container>

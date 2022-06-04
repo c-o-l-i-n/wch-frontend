@@ -17,7 +17,9 @@ const StandardFeaturesPage = ({ standardFeaturesPage, siteInfo }: Props) => {
 	return (
 		<>
 			<Head>
-				<title>Standard Features | {siteInfo.websiteName}</title>
+				<title>
+					{standardFeaturesPage.title} | {siteInfo.websiteName}
+				</title>
 			</Head>
 			<Layout siteInfo={siteInfo}>
 				<Container>

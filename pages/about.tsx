@@ -17,7 +17,9 @@ const AboutUsPage = ({ aboutUsPage, siteInfo }: Props) => {
 	return (
 		<>
 			<Head>
-				<title>About Us | {siteInfo.websiteName}</title>
+				<title>
+					{aboutUsPage.title} | {siteInfo.websiteName}
+				</title>
 			</Head>
 			<Layout siteInfo={siteInfo}>
 				<Container>

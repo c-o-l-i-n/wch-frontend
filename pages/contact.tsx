@@ -19,7 +19,9 @@ const ContactUsPage = ({ contactPage, siteInfo }: Props) => {
 	return (
 		<>
 			<Head>
-				<title>Contact Us | {siteInfo.websiteName}</title>
+				<title>
+					{contactPage.title} | {siteInfo.websiteName}
+				</title>
 			</Head>
 			<Layout siteInfo={siteInfo}>
 				<Container>

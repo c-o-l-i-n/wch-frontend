@@ -1,4 +1,5 @@
 type SimplePage = {
+	title: string
 	pageBody: string
 }
 
