@@ -40,8 +40,7 @@ const TestimonialCard = (props: Props) => {
 				<chakra.p fontWeight={'bold'} fontSize={14}>
 					{testimonial.name}
 					<chakra.span fontWeight={'medium'} color={'gray.500'}>
-						{' '}
-						- {testimonial.location}
+						{testimonial.location && ` - ${testimonial.location}`}
 					</chakra.span>
 				</chakra.p>
 			</Flex>
