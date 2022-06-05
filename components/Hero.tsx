@@ -33,7 +33,7 @@ const Hero = ({
 				justifyContent={'center'}
 				alignItems={'flex-start'}
 				px={[4, 8]}
-				backgroundColor='blackAlpha.600'
+				backgroundColor='blackAlpha.700'
 			>
 				<Container>
 					<Stack
