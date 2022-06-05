@@ -17,12 +17,19 @@ const Carousel = ({ photos, fillFrame }: Props) => {
 		return <Box mt={'2rem'}></Box>
 	}
 
+	const photoShouldFillFrame = (photo: CmsImageData) => {
+		const isLandscape = photo.attributes.width > photo.attributes.height
+		const aspectRatio = photo.attributes.width / photo.attributes.height
+		const threshold = 16 / 9 + 0.01 // 16x9 aspect ratio plus 0.01 epsilon
+
+		return isLandscape && aspectRatio < threshold
+	}
+
 	return (
 		<Swiper
 			modules={[Navigation, Pagination, EffectCoverflow]}
 			navigation
 			pagination={{ clickable: true }}
-			loop={true}
 			className={styles.carousel}
 		>
 			{photos &&
@@ -31,11 +38,9 @@ const Carousel = ({ photos, fillFrame }: Props) => {
 						<Box
 							w={'full'}
 							h={'full'}
-							minHeight={'min-content'}
-							maxHeight={'50rem'}
 							backgroundColor={'gray.700'}
 							backgroundImage={photo.attributes.url}
-							backgroundSize={fillFrame ? 'cover' : 'contain'}
+							backgroundSize={photoShouldFillFrame(photo) ? 'cover' : 'contain'}
 							backgroundRepeat={'no-repeat'}
 							backgroundPosition={'center center'}
 						/>
