@@ -35,7 +35,7 @@ const HouseDetails = ({ house, siteInfo }: Props) => {
 			</Head>
 			<Layout siteInfo={siteInfo}>
 				<Container>
-					<Carousel photos={house.photos.data} shouldFill />
+					<Carousel photos={house.photos.data} fillFrame />
 					<VStack
 						fontSize={'1.25rem'}
 						fontWeight={'bold'}

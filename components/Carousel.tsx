@@ -9,10 +9,14 @@ import styles from '../styles/Carousel.module.scss'
 
 type Props = {
 	photos: Array<CmsImageData>
-	shouldFill?: boolean
+	fillFrame?: boolean
 }
 
-const Carousel = ({ photos, shouldFill }: Props) => {
+const Carousel = ({ photos, fillFrame }: Props) => {
+	if (!photos?.length) {
+		return <Box mt={'2rem'}></Box>
+	}
+
 	return (
 		<Swiper
 			modules={[Navigation, Pagination, EffectCoverflow]}
@@ -29,8 +33,9 @@ const Carousel = ({ photos, shouldFill }: Props) => {
 							h={'full'}
 							minHeight={'min-content'}
 							maxHeight={'50rem'}
+							backgroundColor={'gray.700'}
 							backgroundImage={photo.attributes.url}
-							backgroundSize={shouldFill ? 'cover' : 'contain'}
+							backgroundSize={fillFrame ? 'cover' : 'contain'}
 							backgroundRepeat={'no-repeat'}
 							backgroundPosition={'center center'}
 						/>
