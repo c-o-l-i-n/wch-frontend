@@ -9,10 +9,9 @@ import styles from '../styles/Carousel.module.scss'
 
 type Props = {
 	photos: Array<CmsImageData>
-	fillFrame?: boolean
 }
 
-const Carousel = ({ photos, fillFrame }: Props) => {
+const Carousel = ({ photos }: Props) => {
 	if (!photos?.length) {
 		return <Box mt={'2rem'}></Box>
 	}
