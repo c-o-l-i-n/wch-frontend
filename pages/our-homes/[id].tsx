@@ -7,7 +7,6 @@ import Layout from '../../components/Layout'
 import Head from 'next/head'
 import House from '../../types/CmsCollectionTypes/house'
 import { FaBath, FaBed, FaRuler } from 'react-icons/fa'
-import '@splidejs/react-splide/css'
 import Carousel from '../../components/Carousel'
 import CmsRichText from '../../components/CmsRichText'
 

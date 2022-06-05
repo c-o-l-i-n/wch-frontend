@@ -1,8 +1,11 @@
 import { Box } from '@chakra-ui/react'
-import { Splide, SplideSlide } from '@splidejs/react-splide'
-import Head from 'next/head'
-import React from 'react'
 import CmsImageData from '../types/cmsImageData'
+import { Navigation, Pagination, EffectCoverflow } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import styles from '../styles/Carousel.module.scss'
 
 type Props = {
 	photos: Array<CmsImageData>
@@ -11,41 +14,29 @@ type Props = {
 
 const Carousel = ({ photos, shouldFill }: Props) => {
 	return (
-		<>
-			<Head>
-				<style>
-					{`.carousel {
-							margin: 0.5rem 0 2rem 0;
-							border-radius: 0.75rem;
-							overflow: clip;
-							background: #444444;
-						}`}
-				</style>
-			</Head>
-			<Splide
-				options={{
-					type: 'loop',
-					heightRatio: 9 / 16,
-				}}
-				className={'carousel'}
-			>
-				{photos &&
-					photos.map((photo, index) => (
-						<SplideSlide key={index}>
-							<Box
-								w={'full'}
-								h={'full'}
-								minHeight={'min-content'}
-								maxHeight={'50rem'}
-								backgroundImage={photo.attributes.url}
-								backgroundSize={shouldFill ? 'cover' : 'contain'}
-								backgroundRepeat={'no-repeat'}
-								backgroundPosition={'center center'}
-							/>
-						</SplideSlide>
-					))}
-			</Splide>
-		</>
+		<Swiper
+			modules={[Navigation, Pagination, EffectCoverflow]}
+			navigation
+			pagination={{ clickable: true }}
+			loop={true}
+			className={styles.carousel}
+		>
+			{photos &&
+				photos.map((photo, index) => (
+					<SwiperSlide key={index}>
+						<Box
+							w={'full'}
+							h={'full'}
+							minHeight={'min-content'}
+							maxHeight={'50rem'}
+							backgroundImage={photo.attributes.url}
+							backgroundSize={shouldFill ? 'cover' : 'contain'}
+							backgroundRepeat={'no-repeat'}
+							backgroundPosition={'center center'}
+						/>
+					</SwiperSlide>
+				))}
+		</Swiper>
 	)
 }
 
