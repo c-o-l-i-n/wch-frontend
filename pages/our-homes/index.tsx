@@ -34,7 +34,7 @@ const OurHomes = ({ ourHomesPage, houses, siteInfo }: Props) => {
 					<SimpleGrid
 						w={'full'}
 						columns={[shouldHave2Columns ? 2 : 1, 2, 3]}
-						spacing={['1rem', '2rem']}
+						spacing={'2rem'}
 						overflow={'visible'}
 						mb={'3rem'}
 					>
