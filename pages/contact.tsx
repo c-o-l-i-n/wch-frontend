@@ -1,14 +1,15 @@
 import { Box, Stack } from '@chakra-ui/react'
 import type { GetStaticProps } from 'next'
 import SiteInformation from '../types/CmsSingleTypes/siteInformation'
-import getData from '../utils/data'
+import getData, { getSiteInfo } from '../utils/data'
 import Container from '../components/Container'
 import Layout from '../components/Layout'
-import Head from 'next/head'
 import CmsRichText from '../components/CmsRichText'
 import ContactForm from '../components/ContactForm'
 import SimplePage from '../types/CmsSingleTypes/simplePage'
 import Phone from '../components/Phone'
+import SEO from '../components/SEO'
+import { metaDescriptionFromHtml } from '../utils/pipes'
 
 type Props = {
 	contactPage: SimplePage
@@ -18,11 +19,13 @@ type Props = {
 const ContactUsPage = ({ contactPage, siteInfo }: Props) => {
 	return (
 		<>
-			<Head>
-				<title>
-					{contactPage.title} | {siteInfo.websiteName}
-				</title>
-			</Head>
+			<SEO
+				seo={{
+					title: contactPage.title,
+					description: metaDescriptionFromHtml(contactPage.pageBody),
+				}}
+				siteInfo={siteInfo}
+			/>
 			<Layout siteInfo={siteInfo}>
 				<Container>
 					<Stack direction={['column', 'row']} mt={[0, '2rem']} mb={'3rem'}>
@@ -43,7 +46,7 @@ const ContactUsPage = ({ contactPage, siteInfo }: Props) => {
 export const getStaticProps: GetStaticProps = async () => {
 	const [contactPage, siteInfo] = await Promise.all([
 		getData('contact-page'),
-		getData('site-information?populate=*'),
+		getSiteInfo(),
 	])
 
 	return {

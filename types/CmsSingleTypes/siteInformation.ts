@@ -1,5 +1,6 @@
 import CmsImage from '../cmsImage'
 import NavbarItem from '../navbarItem'
+import SeoData from '../SeoData'
 
 type SiteInformation = {
 	logo: CmsImage
@@ -10,6 +11,7 @@ type SiteInformation = {
 	location: string
 	navbarItems: Array<NavbarItem>
 	footer: string
+	globalSeo: SeoData
 	formspreeContactFormId: string
 }
 

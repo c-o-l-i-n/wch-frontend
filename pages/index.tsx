@@ -1,7 +1,7 @@
 import { Box, Heading, Stack, VStack } from '@chakra-ui/react'
 import type { GetStaticProps } from 'next'
 import SiteInformation from '../types/CmsSingleTypes/siteInformation'
-import getData from '../utils/data'
+import getData, { getSiteInfo } from '../utils/data'
 import Hero from '../components/Hero'
 import Container from '../components/Container'
 import Layout from '../components/Layout'
@@ -11,6 +11,7 @@ import CmsRichText from '../components/CmsRichText'
 import ContactForm from '../components/ContactForm'
 import Phone from '../components/Phone'
 import TestimonialCard from '../components/TestimonialCard'
+import SEO from '../components/SEO'
 
 type Props = {
 	homePage: HomePage
@@ -20,9 +21,7 @@ type Props = {
 const HomePage = ({ homePage, siteInfo }: Props) => {
 	return (
 		<>
-			<Head>
-				<title>{siteInfo.websiteName}</title>
-			</Head>
+			<SEO siteInfo={siteInfo} />
 			<Layout siteInfo={siteInfo}>
 				<Hero {...homePage} />
 				<Container>
@@ -60,11 +59,14 @@ const HomePage = ({ homePage, siteInfo }: Props) => {
 export const getStaticProps: GetStaticProps = async () => {
 	const [homePage, siteInfo] = await Promise.all([
 		getData('home-page?populate=*'),
-		getData('site-information?populate=*'),
+		getSiteInfo(),
 	])
 
 	return {
-		props: { homePage, siteInfo },
+		props: {
+			homePage,
+			siteInfo: siteInfo,
+		},
 	}
 }
 

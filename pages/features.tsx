@@ -1,12 +1,14 @@
 import type { GetStaticProps } from 'next'
 import SiteInformation from '../types/CmsSingleTypes/siteInformation'
-import getData from '../utils/data'
+import getData, { getSiteInfo } from '../utils/data'
 import Container from '../components/Container'
 import Layout from '../components/Layout'
 import Head from 'next/head'
 import CmsRichText from '../components/CmsRichText'
 import TwoColumnPage from '../types/CmsSingleTypes/twoColumnPage'
 import { Box, Stack } from '@chakra-ui/react'
+import SEO from '../components/SEO'
+import { metaDescriptionFromHtml } from '../utils/pipes'
 
 type Props = {
 	standardFeaturesPage: TwoColumnPage
@@ -16,11 +18,15 @@ type Props = {
 const StandardFeaturesPage = ({ standardFeaturesPage, siteInfo }: Props) => {
 	return (
 		<>
-			<Head>
-				<title>
-					{standardFeaturesPage.title} | {siteInfo.websiteName}
-				</title>
-			</Head>
+			<SEO
+				seo={{
+					title: standardFeaturesPage.title,
+					description: metaDescriptionFromHtml(
+						standardFeaturesPage.pageTop + standardFeaturesPage.leftColumn
+					),
+				}}
+				siteInfo={siteInfo}
+			/>
 			<Layout siteInfo={siteInfo}>
 				<Container>
 					<CmsRichText
@@ -54,7 +60,7 @@ const StandardFeaturesPage = ({ standardFeaturesPage, siteInfo }: Props) => {
 export const getStaticProps: GetStaticProps = async () => {
 	const [standardFeaturesPage, siteInfo] = await Promise.all([
 		getData('standard-features-page'),
-		getData('site-information?populate=*'),
+		getSiteInfo(),
 	])
 
 	return {

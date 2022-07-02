@@ -10,24 +10,30 @@ import SEO from '../components/SEO'
 import { metaDescriptionFromHtml } from '../utils/pipes'
 
 type Props = {
-	aboutUsPage: SimplePage
+	featuredNeighborhood: SimplePage
 	siteInfo: SiteInformation
 }
 
-const AboutUsPage = ({ aboutUsPage, siteInfo }: Props) => {
+const FeaturedNeighborhoodPage = ({
+	featuredNeighborhood,
+	siteInfo,
+}: Props) => {
 	return (
 		<>
 			<SEO
 				seo={{
-					title: aboutUsPage.title,
-					description: metaDescriptionFromHtml(aboutUsPage.pageBody),
+					title: featuredNeighborhood.title,
+					description: metaDescriptionFromHtml(featuredNeighborhood.pageBody),
 				}}
 				siteInfo={siteInfo}
 			/>
 			<Layout siteInfo={siteInfo}>
 				<Container thin>
 					<Box mb={'3rem'}>
-						<CmsRichText text={aboutUsPage.pageBody} siteInfo={siteInfo} />
+						<CmsRichText
+							text={featuredNeighborhood.pageBody}
+							siteInfo={siteInfo}
+						/>
 					</Box>
 				</Container>
 			</Layout>
@@ -36,14 +42,14 @@ const AboutUsPage = ({ aboutUsPage, siteInfo }: Props) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-	const [aboutUsPage, siteInfo] = await Promise.all([
-		getData('about-us-page'),
+	const [featuredNeighborhood, siteInfo] = await Promise.all([
+		getData('featured-neighborhood'),
 		getSiteInfo(),
 	])
 
 	return {
-		props: { aboutUsPage, siteInfo },
+		props: { featuredNeighborhood, siteInfo },
 	}
 }
 
-export default AboutUsPage
+export default FeaturedNeighborhoodPage

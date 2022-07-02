@@ -17,7 +17,9 @@ const Layout = ({ siteInfo, children }: Props) => {
 			</Head>
 			<Flex direction={'column'} minHeight={'100vh'}>
 				<Navbar siteInfo={siteInfo} />
-				<main style={{ flex: 1 }}>{children}</main>
+				<main style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+					{children}
+				</main>
 				<Footer siteInfo={siteInfo} />
 			</Flex>
 		</>

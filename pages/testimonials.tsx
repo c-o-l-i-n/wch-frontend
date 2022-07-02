@@ -9,7 +9,9 @@ import TestimonialCard from '../components/TestimonialCard'
 import Testimonial from '../types/CmsCollectionTypes/testimonial'
 import SimplePage from '../types/CmsSingleTypes/simplePage'
 import SiteInformation from '../types/CmsSingleTypes/siteInformation'
-import getData from '../utils/data'
+import getData, { getSiteInfo } from '../utils/data'
+import SEO from '../components/SEO'
+import { metaDescriptionFromHtml } from '../utils/pipes'
 
 type Props = {
 	testimonialsPage: SimplePage
@@ -33,11 +35,15 @@ const TestimonialsPage = ({
 
 	return (
 		<>
-			<Head>
-				<title>
-					{testimonialsPage.title} | {siteInfo.websiteName}
-				</title>
-			</Head>
+			<SEO
+				seo={{
+					title: testimonialsPage.title,
+					description: metaDescriptionFromHtml(
+						`${testimonialsPage.pageBody} ${testimonials[0].name} from ${testimonials[0].location}: ${testimonials[0].text}`
+					),
+				}}
+				siteInfo={siteInfo}
+			/>
 			<Layout siteInfo={siteInfo}>
 				<Container>
 					<CmsRichText text={testimonialsPage.pageBody} siteInfo={siteInfo} />
@@ -64,7 +70,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	const [testimonialsPage, testimonials, siteInfo] = await Promise.all([
 		getData('testimonials-page'),
 		getData('testimonials?sort=order'),
-		getData('site-information?populate=*'),
+		getSiteInfo(),
 	])
 
 	return {

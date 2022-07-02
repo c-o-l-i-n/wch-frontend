@@ -1,14 +1,16 @@
 import { Box, HStack, Text, VStack } from '@chakra-ui/react'
 import type { GetStaticProps, GetStaticPaths } from 'next'
 import SiteInformation from '../../types/CmsSingleTypes/siteInformation'
-import getData from '../../utils/data'
+import getData, { getSiteInfo } from '../../utils/data'
 import Container from '../../components/Container'
 import Layout from '../../components/Layout'
-import Head from 'next/head'
 import House from '../../types/CmsCollectionTypes/house'
 import { FaBath, FaBed, FaRuler } from 'react-icons/fa'
 import Carousel from '../../components/Carousel'
 import CmsRichText from '../../components/CmsRichText'
+import SEO from '../../components/SEO'
+import { metaDescriptionFromHtml } from '../../utils/pipes'
+import Link from 'next/link'
 
 type Props = {
 	house: House
@@ -30,9 +32,14 @@ const HouseDetails = ({ house, siteInfo }: Props) => {
 
 	return (
 		<>
-			<Head>
-				<title>{siteInfo.websiteName}</title>
-			</Head>
+			<SEO
+				seo={{
+					title: house.briefDescription,
+					description: metaDescriptionFromHtml(house.detailedDescription),
+					shareImage: house.thumbnail,
+				}}
+				siteInfo={siteInfo}
+			/>
 			<Layout siteInfo={siteInfo}>
 				<Container>
 					<Carousel photos={house.photos.data} />
@@ -91,7 +98,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 	const [house, siteInfo] = await Promise.all([
 		getData(`houses/${params.id}?populate=*`),
-		getData('site-information?populate=*'),
+		getSiteInfo(),
 	])
 
 	return {

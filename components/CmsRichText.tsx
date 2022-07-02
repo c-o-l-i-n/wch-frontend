@@ -12,7 +12,8 @@ type Props = {
 
 const CmsRichText = ({ text, siteInfo }: Props) => {
 	const isExternalLink = (url: string) => {
-		if (!process.browser) {
+		// if server side rendering (dev environment)
+		if (typeof window === 'undefined') {
 			return url.startsWith('http')
 		}
 

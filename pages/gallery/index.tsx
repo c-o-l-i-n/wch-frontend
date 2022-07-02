@@ -1,35 +1,38 @@
 import { Box, Heading, SimpleGrid, useMediaQuery } from '@chakra-ui/react'
 import type { GetStaticProps } from 'next'
 import SiteInformation from '../../types/CmsSingleTypes/siteInformation'
-import getData from '../../utils/data'
+import getData, { getSiteInfo } from '../../utils/data'
 import Container from '../../components/Container'
 import Layout from '../../components/Layout'
-import Head from 'next/head'
 import House from '../../types/CmsCollectionTypes/house'
 import HouseCard from '../../components/HouseCard'
 import CmsRichText from '../../components/CmsRichText'
 import SimplePage from '../../types/CmsSingleTypes/simplePage'
+import SEO from '../../components/SEO'
+import { metaDescriptionFromHtml } from '../../utils/pipes'
 
 type Props = {
-	ourHomesPage: SimplePage
+	galleryPage: SimplePage
 	houses: Array<House>
 	siteInfo: SiteInformation
 }
 
-const OurHomes = ({ ourHomesPage, houses, siteInfo }: Props) => {
+const Gallery = ({ galleryPage, houses, siteInfo }: Props) => {
 	const [shouldHave2Columns] = useMediaQuery('(min-width: 45rem)')
 
 	return (
 		<>
-			<Head>
-				<title>
-					{ourHomesPage.title} | {siteInfo.websiteName}
-				</title>
-			</Head>
+			<SEO
+				seo={{
+					title: galleryPage.title,
+					description: metaDescriptionFromHtml(galleryPage.pageBody),
+				}}
+				siteInfo={siteInfo}
+			/>
 			<Layout siteInfo={siteInfo}>
 				<Container>
 					<Box mb={'2rem'}>
-						<CmsRichText text={ourHomesPage.pageBody} siteInfo={siteInfo} />
+						<CmsRichText text={galleryPage.pageBody} siteInfo={siteInfo} />
 					</Box>
 					<SimpleGrid
 						w={'full'}
@@ -49,15 +52,15 @@ const OurHomes = ({ ourHomesPage, houses, siteInfo }: Props) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-	const [ourHomesPage, houses, siteInfo] = await Promise.all([
+	const [galleryPage, houses, siteInfo] = await Promise.all([
 		getData('our-homes-page'),
 		getData('houses?populate=thumbnail'),
-		getData('site-information?populate=*'),
+		getSiteInfo(),
 	])
 
 	return {
-		props: { ourHomesPage, houses, siteInfo },
+		props: { galleryPage, houses, siteInfo },
 	}
 }
 
-export default OurHomes
+export default Gallery

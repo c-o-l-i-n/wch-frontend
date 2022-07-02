@@ -23,7 +23,7 @@ const HouseCard = ({ house }: Props) => {
 	}
 
 	return (
-		<Link href={'/our-homes/' + house.id} passHref>
+		<Link href={'/gallery/' + house.id} passHref>
 			<Box
 				as={'a'}
 				rounded={'xl'}
