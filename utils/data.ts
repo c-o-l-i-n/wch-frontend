@@ -1,6 +1,6 @@
 import SiteInformation from '../types/CmsSingleTypes/siteInformation'
 
-const baseUrl = 'https://williamscustomhomes.herokuapp.com/api/'
+const baseUrl = 'https://web-hosting-291602.uk.r.appspot.com/api/'
 
 const getData = async (endpoint: string) => {
 	let data = (await (await fetch(baseUrl + endpoint)).json()).data

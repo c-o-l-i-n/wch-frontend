@@ -7,7 +7,7 @@ const AdminPage = () => {
 				<title>WCH CMS</title>
 			</Head>
 			<iframe
-				src='https://williamscustomhomes.herokuapp.com/admin/content-manager'
+				src='https://web-hosting-291602.uk.r.appspot.com/admin/content-manager'
 				frameBorder='0'
 				style={{ height: '100vh', width: '100vw' }}
 			></iframe>

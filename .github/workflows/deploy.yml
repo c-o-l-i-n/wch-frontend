@@ -1,0 +1,42 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v3
+
+      - name: Create .env file 🏔
+        run: |
+          touch .env
+          echo DATA_API_URL=${{ secrets.DATA_API_URL }} >> .env
+
+      - name: Setup Node 💿
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+
+      - name: Install Dependencies 📦
+        run: npm ci
+
+      - name: Build 🛠
+        run: npm run build
+
+      - name: Export ✈️
+        run: npm run export
+
+      - name: Deploy to Github Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.2.3
+        with:
+          branch: gh-pages
+          folder: out
