@@ -16,11 +16,6 @@ jobs:
       - name: Checkout 🛎
         uses: actions/checkout@v3
 
-      - name: Create .env file 🏔
-        run: |
-          touch .env
-          echo DATA_API_URL=${{ secrets.DATA_API_URL }} >> .env
-
       - name: Setup Node 💿
         uses: actions/setup-node@v3
         with:
