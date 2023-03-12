@@ -2,11 +2,27 @@ import { Box, Stack, Image, HStack } from '@chakra-ui/react'
 import SiteInformation from '../types/CmsSingleTypes/siteInformation'
 import Container from './Container'
 import CmsRichText from './CmsRichText'
+import Link from 'next/link'
+import CmsMedia from '../types/cmsMedia'
+import { ReactElement } from 'react-markdown/lib/react-markdown'
 
-type Props = {
+const footgerImage = (image: CmsMedia, siteInfo: SiteInformation): ReactElement => (
+	<Image
+		src={image.data.attributes.formats.small?.url ?? image.data.attributes.url}
+		alt={image.data.attributes.alternativeText}
+		display={'block'}
+		height={'100%'}
+		width={'auto'}
+		margin={'auto'}
+		borderRadius={'0.5rem'}
+	/>
+)
+
+interface Props {
 	siteInfo: SiteInformation
 }
-const Footer = ({ siteInfo }: Props) => {
+
+const Footer = ({ siteInfo }: Props): ReactElement => {
 	return (
 		<Box backgroundColor='gray.700' color='white' py={'3rem'}>
 			<Container>
@@ -31,41 +47,34 @@ const Footer = ({ siteInfo }: Props) => {
 							{siteInfo.headshot.data ?
 								(
 									<Box h={'8rem'}>
-										<Image
-											src={siteInfo.headshot.data.attributes.formats.small?.url ?? siteInfo.headshot.data.attributes.url}
-											alt={siteInfo.headshot.data.attributes.alternativeText}
-											display={'block'}
-											height={'100%'}
-											width={'auto'}
-											margin={'auto'}
-											borderRadius={'0.5rem'}
-										/>
-										</Box>
+										{siteInfo.realEstateWebsite ?
+											<Link href={siteInfo.realEstateWebsite ?? ''} passHref>
+												<a>
+													{footgerImage(siteInfo.headshot, siteInfo)}
+												</a>
+											</Link>
+											: footgerImage(siteInfo.headshot, siteInfo)
+										}
+									</Box>
 								)
 								: <></>
 							}
 							{siteInfo.realEstateLogo.data ?
 								(
 									<Box h={'8rem'}>
-										<Image
-											src={siteInfo.realEstateLogo.data.attributes.formats.small?.url ?? siteInfo.realEstateLogo.data.attributes.url}
-											alt={siteInfo.realEstateLogo.data.attributes.alternativeText}
-											display={'block'}
-											height={'100%'}
-											width={'auto'}
-											margin={'auto'}
-											borderRadius={'0.5rem'}
-										/>
+										{siteInfo.realEstateWebsite ?
+											<Link href={siteInfo.realEstateWebsite ?? ''} passHref>
+												<a>
+													{footgerImage(siteInfo.realEstateLogo, siteInfo)}
+												</a>
+											</Link>
+											: footgerImage(siteInfo.realEstateLogo, siteInfo)
+										}
 									</Box>
 								)
 								: <></>
 							}
 						</HStack>
-						{/* <Image
-							src='/images/equal-housing.svg'
-							alt='Equal Housing Opportunity'
-							h='3rem'
-						/> */}
 					</Stack>
 				</Stack>
 			</Container>
