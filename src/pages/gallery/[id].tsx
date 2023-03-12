@@ -19,7 +19,7 @@ type Props = {
 }
 
 const HouseDetails = ({ house, siteInfo }: Props) => {
-	let bathrooms = `${house.wholeBathrooms} Whole`
+	let bathrooms = `${house.wholeBathrooms} Full`
 
 	if (house.halfBathrooms) {
 		bathrooms += `, ${house.halfBathrooms} Half Bathroom${
