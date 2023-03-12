@@ -19,14 +19,14 @@ type Props = {
 }
 
 const HouseDetails = ({ house, siteInfo }: Props) => {
-	let bathrooms = `${house.wholeBathrooms} Full`
+	let bathrooms = `${house.fullBathrooms} Full`
 
 	if (house.halfBathrooms) {
 		bathrooms += `, ${house.halfBathrooms} Half Bathroom${
 			house.halfBathrooms === 1 ? '' : 's'
 		}`
 	} else {
-		bathrooms += ` Bathroom${house.wholeBathrooms === 1 ? '' : 's'}`
+		bathrooms += ` Bathroom${house.fullBathrooms === 1 ? '' : 's'}`
 	}
 
 	const iconSpacing = '0.75rem'

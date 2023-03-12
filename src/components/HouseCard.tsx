@@ -12,7 +12,7 @@ type Props = {
 const HouseCard = ({ house }: Props) => {
 	const [shouldHave2Columns] = useMediaQuery('(min-width: 45rem)')
 
-	let bathrooms = house.wholeBathrooms.toString()
+	let bathrooms = house.fullBathrooms.toString()
 
 	if (house.halfBathrooms) {
 		if (house.halfBathrooms === 1) {

@@ -6,7 +6,7 @@ export default interface House {
 	thumbnail: CmsMedia
 	briefDescription: string
 	bedrooms: number
-	wholeBathrooms: number
+	fullBathrooms: number
 	halfBathrooms: number
 	squareFeet: number
 	photos: { data: Array<CmsMediaData> }
