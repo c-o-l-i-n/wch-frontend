@@ -1,11 +1,11 @@
-import { Box, Button, HStack, Text, VStack } from '@chakra-ui/react'
+import { Box, Button, Heading, HStack, Stack, Text, VStack } from '@chakra-ui/react'
 import type { GetStaticProps, GetStaticPaths } from 'next'
 import SiteInformation from '../../types/CmsSingleTypes/siteInformation'
 import getData, { getSiteInfo } from '../../utils/data'
 import Container from '../../components/Container'
 import Layout from '../../components/Layout'
 import House from '../../types/CmsCollectionTypes/house'
-import { FaBath, FaBed, FaRuler } from 'react-icons/fa'
+import { FaBath, FaBed, FaFilePdf, FaRuler } from 'react-icons/fa'
 import Carousel from '../../components/Carousel'
 import CmsRichText from '../../components/CmsRichText'
 import SEO from '../../components/SEO'
@@ -30,6 +30,7 @@ const HouseDetails = ({ house, siteInfo }: Props) => {
 	}
 
 	const iconSpacing = '0.75rem'
+	const fontSize = '1.25rem'
 
 	// include house thumbnail as 1st photo in carousel
 	const photos = house.photos?.data ? [house.thumbnail.data, ...house.photos.data] : [house.thumbnail.data]
@@ -52,36 +53,71 @@ const HouseDetails = ({ house, siteInfo }: Props) => {
 						variant='link'
 						leftIcon={<ArrowBackIcon />}
 						color={'brand'}
+						my={'1rem'}
 					>
 						Back
 					</Button>
 				</Link>
+
+					<Heading as={'h3'} size={'lg'}>
+						{house.briefDescription}
+					</Heading>
+
 					<Carousel photos={photos} />
-					<VStack
-						fontSize={'1.25rem'}
-						fontWeight={'bold'}
-						alignItems={'flex-start'}
-						lineHeight={'1.15'}
-						spacing={'0.75rem'}
+
+					<Stack
+						direction={['column', 'row']}
+						spacing={'1.5rem'}
+						mb={'1.5rem'}
+						align={'flex-start'}
+						justify={'space-between'}
 					>
-						<HStack spacing={iconSpacing}>
-							<FaBed />
-							<Text>
-								{house.bedrooms} Bedroom{house.bedrooms === 1 ? '' : 's'}
-							</Text>
-						</HStack>
-						<HStack spacing={iconSpacing}>
-							<FaBath />
-							<Text>{bathrooms}</Text>
-						</HStack>
-						<HStack spacing={iconSpacing}>
-							<FaRuler />
-							<Text>
-								{house.squareFeet.toLocaleString()} Square Feet
-							</Text>
-						</HStack>
-					</VStack>
-					<Box mt={'1.5rem'} mb={'3rem'}>
+						<VStack
+							fontSize={fontSize}
+							fontWeight={'bold'}
+							alignItems={'flex-start'}
+							lineHeight={'1.15'}
+							spacing={'0.75rem'}
+						>
+							<HStack spacing={iconSpacing}>
+								<FaBed />
+								<Text>
+									{house.bedrooms} Bedroom{house.bedrooms === 1 ? '' : 's'}
+								</Text>
+							</HStack>
+							<HStack spacing={iconSpacing}>
+								<FaBath />
+								<Text>{bathrooms}</Text>
+							</HStack>
+							<HStack spacing={iconSpacing}>
+								<FaRuler />
+								<Text>
+									{house.squareFeet.toLocaleString()} Square Feet
+								</Text>
+							</HStack>
+						</VStack>
+
+						{house.floorPlan.data ?
+							(
+								<Link href={house.floorPlan.data.attributes.url} passHref>
+									<Button
+										as={'a'}
+										target={'_blank'}
+										variant='link'
+										leftIcon={<FaFilePdf />}
+										color={'brand'}
+										fontSize={fontSize}
+										marginTop={'1.5rem'}
+									>
+										View Floor Plan
+									</Button>
+								</Link>
+							)
+							: null
+						}
+					</Stack>
+
+					<Box mb={'3rem'}>
 						<CmsRichText text={house.detailedDescription} siteInfo={siteInfo} />
 					</Box>
 				</Container>

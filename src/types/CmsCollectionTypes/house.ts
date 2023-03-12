@@ -10,5 +10,6 @@ export default interface House {
 	halfBathrooms: number
 	squareFeet: number
 	photos: { data: Array<CmsMediaData> }
+	floorPlan: CmsMedia
 	detailedDescription: string
 }
