@@ -9,11 +9,9 @@ type Props = {
 const SEO = ({ seo, siteInfo }: Props) => {
 	const globalSeo = siteInfo.globalSeo
 
-	const title = seo?.title
-		? `${seo.title} - ${siteInfo.websiteName}`
-		: globalSeo.title
-	const description = seo?.description || globalSeo.description
-	const shareImage = seo?.shareImage || globalSeo.shareImage
+	const title = seo?.title ?? globalSeo.title
+	const description = seo?.description ?? globalSeo.description
+	const shareImage = seo?.shareImage ?? globalSeo.shareImage
 
 	return (
 		<Head>
