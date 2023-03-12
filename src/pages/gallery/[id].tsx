@@ -1,4 +1,4 @@
-import { Box, HStack, Text, VStack } from '@chakra-ui/react'
+import { Box, Button, HStack, Text, VStack } from '@chakra-ui/react'
 import type { GetStaticProps, GetStaticPaths } from 'next'
 import SiteInformation from '../../types/CmsSingleTypes/siteInformation'
 import getData, { getSiteInfo } from '../../utils/data'
@@ -11,6 +11,7 @@ import CmsRichText from '../../components/CmsRichText'
 import SEO from '../../components/SEO'
 import { metaDescriptionFromHtml } from '../../utils/pipes'
 import Link from 'next/link'
+import { ArrowBackIcon } from '@chakra-ui/icons'
 
 type Props = {
 	house: House
@@ -42,6 +43,16 @@ const HouseDetails = ({ house, siteInfo }: Props) => {
 			/>
 			<Layout siteInfo={siteInfo}>
 				<Container thin>
+				<Link href={'/gallery'} passHref>
+					<Button
+						as={'a'}
+						variant='link'
+						leftIcon={<ArrowBackIcon />}
+						color={'brand'}
+					>
+						Back
+					</Button>
+				</Link>
 					<Carousel photos={house.photos.data} />
 					<VStack
 						fontSize={'1.25rem'}
