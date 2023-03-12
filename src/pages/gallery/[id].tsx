@@ -53,7 +53,7 @@ const HouseDetails = ({ house, siteInfo }: Props) => {
 						Back
 					</Button>
 				</Link>
-					<Carousel photos={house.photos.data} />
+					<Carousel photos={[house.thumbnail.data, ...house.photos.data]} />
 					<VStack
 						fontSize={'1.25rem'}
 						fontWeight={'bold'}
