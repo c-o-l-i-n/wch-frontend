@@ -41,7 +41,7 @@ const HouseDetails = ({ house, siteInfo }: Props) => {
 				siteInfo={siteInfo}
 			/>
 			<Layout siteInfo={siteInfo}>
-				<Container>
+				<Container thin>
 					<Carousel photos={house.photos.data} />
 					<VStack
 						fontSize={'1.25rem'}
