@@ -31,6 +31,9 @@ const HouseDetails = ({ house, siteInfo }: Props) => {
 
 	const iconSpacing = '0.75rem'
 
+	// include house thumbnail as 1st photo in carousel
+	const photos = house.photos?.data ? [house.thumbnail.data, ...house.photos.data] : [house.thumbnail.data]
+
 	return (
 		<>
 			<SEO
@@ -53,7 +56,7 @@ const HouseDetails = ({ house, siteInfo }: Props) => {
 						Back
 					</Button>
 				</Link>
-					<Carousel photos={[house.thumbnail.data, ...house.photos.data]} />
+					<Carousel photos={photos} />
 					<VStack
 						fontSize={'1.25rem'}
 						fontWeight={'bold'}
