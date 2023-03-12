@@ -10,7 +10,10 @@ export default interface SiteInformation {
 	phone: string
 	location: string
 	navbarItems: Array<NavbarItem>
-	footer: string
+	footerLeft: string
+	footerRight: string
+	headshot: CmsMedia
+	realEstateLogo: CmsMedia
 	globalSeo: SeoData
 	formspreeContactFormId: string
 }

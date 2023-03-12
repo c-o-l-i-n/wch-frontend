@@ -16,13 +16,39 @@ const Footer = ({ siteInfo }: Props) => {
 					spacing='2rem'
 				>
 					<Box textAlign={['center', 'left']}>
-						<CmsRichText text={siteInfo.footer} siteInfo={siteInfo} />
+						<CmsRichText text={siteInfo.footerLeft} siteInfo={siteInfo} />
 					</Box>
-					<Image
-						src='/images/equal-housing.svg'
-						alt='Equal Housing Opportunity'
-						h='3rem'
-					></Image>
+					<Stack
+						direction={['column', 'row']}
+						spacing='1rem'
+					>
+						<CmsRichText text={siteInfo.footerRight} siteInfo={siteInfo} />
+						{siteInfo.realEstateLogo.data ?
+							(
+								<Image
+									src={siteInfo.realEstateLogo.data.attributes.formats.small.url ?? siteInfo.realEstateLogo.data.attributes.url}
+									alt={siteInfo.realEstateLogo.data.attributes.alternativeText}
+									h={['6rem', '100%']}
+								/>
+							)
+							: <></>
+						}
+						{siteInfo.headshot.data ?
+							(
+								<Image
+									src={siteInfo.headshot.data.attributes.formats.small.url ?? siteInfo.headshot.data.attributes.url}
+									alt={siteInfo.headshot.data.attributes.alternativeText}
+									h={['6rem', '100%']}
+								/>
+							)
+							: <></>
+						}
+						<Image
+							src='/images/equal-housing.svg'
+							alt='Equal Housing Opportunity'
+							h='3rem'
+						/>
+					</Stack>
 				</Stack>
 			</Container>
 		</Box>
