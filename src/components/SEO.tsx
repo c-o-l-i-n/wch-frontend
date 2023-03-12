@@ -30,7 +30,7 @@ const SEO = ({ seo, siteInfo }: Props) => {
 			<meta
 				property='og:image'
 				key='og:image'
-				content={shareImage.data.attributes.url}
+				content={shareImage.data.attributes.formats.large.url ?? shareImage.data.attributes.url}
 			/>
 			<meta
 				name='twitter:card'
