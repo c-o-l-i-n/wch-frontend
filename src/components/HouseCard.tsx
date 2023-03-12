@@ -72,7 +72,7 @@ const HouseCard = ({ house }: Props) => {
 						</Text>
 					</HStack>
 				</HStack>
-				<Text>{house.briefDescription}</Text>
+				<Text>{house.title}</Text>
 			</Box>
 		</Link>
 	)

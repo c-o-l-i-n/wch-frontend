@@ -39,8 +39,8 @@ const HouseDetails = ({ house, siteInfo }: Props) => {
 		<>
 			<SEO
 				seo={{
-					title: house.briefDescription,
-					description: metaDescriptionFromHtml(house.detailedDescription),
+					title: house.title,
+					description: metaDescriptionFromHtml(house.description ?? house.title),
 					shareImage: house.thumbnail,
 				}}
 				siteInfo={siteInfo}
@@ -60,7 +60,7 @@ const HouseDetails = ({ house, siteInfo }: Props) => {
 				</Link>
 
 					<Heading as={'h3'} size={'lg'}>
-						{house.briefDescription}
+						{house.title}
 					</Heading>
 
 					<Carousel photos={photos} />
@@ -118,7 +118,7 @@ const HouseDetails = ({ house, siteInfo }: Props) => {
 					</Stack>
 
 					<Box mb={'3rem'}>
-						<CmsRichText text={house.detailedDescription} siteInfo={siteInfo} />
+						<CmsRichText text={house.description} siteInfo={siteInfo} />
 					</Box>
 				</Container>
 			</Layout>
