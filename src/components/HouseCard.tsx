@@ -18,7 +18,7 @@ const HouseCard = ({ house }: Props) => {
 		if (house.halfBathrooms === 1) {
 			bathrooms += '.5'
 		} else {
-			bathrooms += `w, ${house.halfBathrooms}h`
+			bathrooms += `f, ${house.halfBathrooms}h`
 		}
 	}
 
