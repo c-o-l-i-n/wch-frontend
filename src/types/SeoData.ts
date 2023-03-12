@@ -1,9 +1,7 @@
-import CmsImage from './cmsImage'
+import CmsMedia from './cmsMedia'
 
-type SeoData = {
+export default interface SeoData {
 	title: string
 	description: string
-	shareImage: CmsImage
+	shareImage: CmsMedia
 }
-
-export default SeoData

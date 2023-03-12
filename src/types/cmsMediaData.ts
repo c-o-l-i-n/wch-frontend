@@ -1,4 +1,4 @@
-type CmsImageData = {
+export default interface CmsMediaData {
 	attributes: {
 		alternativeText: string
 		url: string
@@ -14,5 +14,3 @@ type CmsImageData = {
 		}
 	}
 }
-
-export default CmsImageData

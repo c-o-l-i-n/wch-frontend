@@ -1,6 +1,4 @@
-type SimplePage = {
+export default interface SimplePage {
 	title: string
 	pageBody: string
 }
-
-export default SimplePage

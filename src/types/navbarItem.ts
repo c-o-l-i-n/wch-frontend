@@ -1,7 +1,5 @@
-type NavbarItem = {
+export default interface NavbarItem {
 	label: string
 	url: string
 	visible: boolean
 }
-
-export default NavbarItem

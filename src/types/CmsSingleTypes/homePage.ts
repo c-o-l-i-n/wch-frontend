@@ -1,8 +1,8 @@
 import Testimonial from '../CmsCollectionTypes/testimonial'
-import CmsImage from '../cmsImage'
+import CmsMedia from '../cmsMedia'
 
-type HomePage = {
-	heroImage: CmsImage
+export default interface HomePage {
+	heroImage: CmsMedia
 	heroText: string
 	primaryCallToActionButtonText: string
 	primaryCallToActionButtonLink: string
@@ -13,5 +13,3 @@ type HomePage = {
 	featuredTestimonialsHeading: string
 	featuredTestimonials: { data: Array<{ attributes: Testimonial }> }
 }
-
-export default HomePage

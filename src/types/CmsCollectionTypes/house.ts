@@ -1,16 +1,14 @@
-import CmsImage from '../cmsImage'
-import CmsImageData from '../cmsImageData'
+import CmsMedia from '../cmsMedia'
+import CmsMediaData from '../cmsMediaData'
 
-type House = {
+export default interface House {
 	id: number
-	thumbnail: CmsImage
+	thumbnail: CmsMedia
 	briefDescription: string
 	bedrooms: number
 	wholeBathrooms: number
 	halfBathrooms: number
 	squareFeet: number
-	photos: { data: Array<CmsImageData> }
+	photos: { data: Array<CmsMediaData> }
 	detailedDescription: string
 }
-
-export default House

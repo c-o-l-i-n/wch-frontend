@@ -1,10 +1,10 @@
-import CmsImage from '../cmsImage'
+import CmsMedia from '../cmsMedia'
 import NavbarItem from '../navbarItem'
 import SeoData from '../SeoData'
 
-type SiteInformation = {
-	logo: CmsImage
-	favicon: CmsImage
+export default interface SiteInformation {
+	logo: CmsMedia
+	favicon: CmsMedia
 	websiteName: string
 	companyLegalName: string
 	phone: string
@@ -14,5 +14,3 @@ type SiteInformation = {
 	globalSeo: SeoData
 	formspreeContactFormId: string
 }
-
-export default SiteInformation

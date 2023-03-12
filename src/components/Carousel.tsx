@@ -1,5 +1,5 @@
 import { Box } from '@chakra-ui/react'
-import CmsImageData from '../types/cmsImageData'
+import CmsMediaData from '../types/cmsMediaData'
 import { Navigation, Pagination, EffectCoverflow } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
@@ -8,7 +8,7 @@ import 'swiper/css/pagination'
 import styles from '../styles/Carousel.module.scss'
 
 type Props = {
-	photos: Array<CmsImageData>
+	photos: Array<CmsMediaData>
 }
 
 const Carousel = ({ photos }: Props) => {
@@ -16,7 +16,7 @@ const Carousel = ({ photos }: Props) => {
 		return <Box mt={'2rem'}></Box>
 	}
 
-	const photoShouldFillFrame = (photo: CmsImageData) => {
+	const photoShouldFillFrame = (photo: CmsMediaData) => {
 		const isLandscape = photo.attributes.width > photo.attributes.height
 		const aspectRatio = photo.attributes.width / photo.attributes.height
 		const threshold = 16 / 9 + 0.01 // 16x9 aspect ratio plus 0.01 epsilon
