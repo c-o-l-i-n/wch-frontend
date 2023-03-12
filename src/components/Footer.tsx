@@ -49,7 +49,7 @@ const Footer = ({ siteInfo }: Props): ReactElement => {
 									<Box h={'8rem'}>
 										{siteInfo.realEstateWebsite ?
 											<Link href={siteInfo.realEstateWebsite ?? ''} passHref>
-												<a>
+												<a target={'_blank'}>
 													{footgerImage(siteInfo.headshot, siteInfo)}
 												</a>
 											</Link>
@@ -64,7 +64,7 @@ const Footer = ({ siteInfo }: Props): ReactElement => {
 									<Box h={'8rem'}>
 										{siteInfo.realEstateWebsite ?
 											<Link href={siteInfo.realEstateWebsite ?? ''} passHref>
-												<a>
+												<a target={'_blank'}>
 													{footgerImage(siteInfo.realEstateLogo, siteInfo)}
 												</a>
 											</Link>
