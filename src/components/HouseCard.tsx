@@ -38,7 +38,7 @@ const HouseCard = ({ house }: Props) => {
 					width={'full'}
 					rounded={'lg'}
 					backgroundImage={`url(${
-						house.thumbnail.data ? house.thumbnail.data.attributes.url : '' //siteInfo.favicon.data.attributes.url
+						house.thumbnail.data.attributes.formats.small.url ?? house.thumbnail.data.attributes.url ?? ''
 					})`}
 					backgroundPosition={'center'}
 					backgroundColor={'#ddd'}

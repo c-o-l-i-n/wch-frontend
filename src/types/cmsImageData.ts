@@ -4,6 +4,14 @@ type CmsImageData = {
 		url: string
 		width: number
 		height: number
+		formats: {
+			small: {
+				url: string
+			},
+			large: {
+				url: string
+			}
+		}
 	}
 }
 
