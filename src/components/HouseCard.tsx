@@ -80,7 +80,7 @@ const HouseCard = ({ house }: Props) => {
 					<HStack>
 						<FaRuler />
 						<Text>
-							{house.squareFeet.toLocaleString()} ft<sup>2</sup>
+							{house.squareFeet.toLocaleString()} sf
 						</Text>
 					</HStack>
 				</HStack>

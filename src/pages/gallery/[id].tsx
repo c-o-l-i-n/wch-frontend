@@ -74,7 +74,7 @@ const HouseDetails = ({ house, siteInfo }: Props) => {
 						<HStack spacing={iconSpacing}>
 							<FaRuler />
 							<Text>
-								{house.squareFeet.toLocaleString()} ft<sup>2</sup>
+								{house.squareFeet.toLocaleString()} Square Feet
 							</Text>
 						</HStack>
 					</VStack>
