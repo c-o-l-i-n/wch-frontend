@@ -38,7 +38,7 @@ const HouseCard = ({ house }: Props) => {
 					width={'full'}
 					rounded={'lg'}
 					backgroundImage={`url(${
-						house.thumbnail.data.attributes.formats.small.url ?? house.thumbnail.data.attributes.url ?? ''
+						house.thumbnail.data.attributes.formats.small.url ?? house.thumbnail.data.attributes.url
 					})`}
 					backgroundPosition={'center'}
 					backgroundColor={'#ddd'}
@@ -46,18 +46,6 @@ const HouseCard = ({ house }: Props) => {
 					backgroundRepeat={'no-repeat'}
 					position={'relative'}
 				>
-					{house.thumbnail.data ? null : (
-						<FaHome
-							fontSize={'3rem'}
-							color={'#bbb'}
-							style={{
-								position: 'absolute',
-								top: '50%',
-								left: '50%',
-								transform: 'translate(-50%, -50%)',
-							}}
-						/>
-					)}
 				</Box>
 
 				<HStack
