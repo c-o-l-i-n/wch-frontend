@@ -1,5 +1,16 @@
 <h1 align="center">Williams Custom Homes Website Frontend</h1>
 
+<div align="center">
+  <a href="https://github.com/c-o-l-i-n/wch-frontend/actions/workflows/deploy.yml">
+    <img alt="Github Build and Deployment Status" src="https://img.shields.io/github/actions/workflow/status/c-o-l-i-n/wch-frontend/deploy.yml?logo=github&logoWidth=12">
+  </a>
+  <a href="https://new.williamscustomhomes.com">
+    <img alt="Website Monitoring Status" src="https://img.shields.io/website?url=https%3A%2F%2Fnew.williamscustomhomes.com">
+  </a>
+</div>
+
+<br />
+
 <div align="center" >
   <a href="https://new.williamscustomhomes.com">
     <img src="public/images/logo.svg" alt="Logo" />
@@ -50,8 +61,6 @@ npm run dev
 Website: [colinaw.com](https://colinaw.com)
 <br>
 Github: [@c-o-l-i-n](https://github.com/c-o-l-i-n)
-
-<a href="https://www.buymeacoffee.com/colinw" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="width: 200px" ></a>
 
 ## License
 
