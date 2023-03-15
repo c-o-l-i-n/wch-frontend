@@ -17,14 +17,29 @@ const SEO = ({ seo, siteInfo }: Props) => {
 		<Head>
 			{/* Title */}
 			<title>{title}</title>
-			<meta property='og:title' key='og:title' content={title} />
+			<meta
+				property='og:title'
+				key='og:title'
+				content={title}
+			/>
 
 			{/* Description */}
-			<meta name='description' key='description' content={description} />
-			<meta name='og:description' key='og:description' content={description} />
+			<meta
+				name='description'
+				key='description'
+				content={description}
+			/>
+			<meta
+				name='og:description'
+				key='og:description'
+				content={description}
+			/>
 
 			{/* Type */}
-			<meta property='og:type' content='website' />
+			<meta
+				property='og:type'
+				content='website'
+			/>
 
 			{/* Share Image */}
 			<meta
@@ -36,6 +51,13 @@ const SEO = ({ seo, siteInfo }: Props) => {
 				name='twitter:card'
 				key='twitter:card'
 				content='summary_large_image'
+			/>
+
+			{/* Site Name */}
+			<meta
+				property='og:site_name'
+				key='og:site_name'
+				content={siteInfo.websiteName}
 			/>
 		</Head>
 	)
