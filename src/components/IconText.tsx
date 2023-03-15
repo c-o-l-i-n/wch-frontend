@@ -55,18 +55,18 @@ const IconText = ({
 
 	if (isPhoneNumber) {
 		return (
-			<Link href={'tel:' + text.replace(/\D/g, '')} passHref>
+			<Link href={'tel:' + text.replace(/\D/g, '')} passHref legacyBehavior>
 				{component}
 			</Link>
-		)
+		);
 	}
 
 	if (isEmail) {
 		return (
-			<Link href={'mailto:' + text} passHref>
+			<Link href={'mailto:' + text} passHref legacyBehavior>
 				{component}
 			</Link>
-		)
+		);
 	}
 
 	return component

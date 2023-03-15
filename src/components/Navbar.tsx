@@ -28,7 +28,7 @@ const Navbar = ({ siteInfo }: Props) => {
 				<Flex w={'100%'} h='5rem' alignItems='center'>
 					{/* Logo & Navigation Links */}
 					<Flex h='100%' flex={1} justifyContent='start' alignItems='center'>
-						<Link href='/' passHref>
+						<Link href='/' passHref legacyBehavior>
 							<Flex
 								as={'a'}
 								h='100%'
@@ -88,7 +88,7 @@ const DesktopNav = ({ navbarItems }: NavbarItemsProps) => {
 			{navbarItems
 				.filter((navbarItem) => navbarItem.visible)
 				.map((navbarItem) => (
-					<Link key={navbarItem.label} href={navbarItem.url} passHref>
+					<Link key={navbarItem.label} href={navbarItem.url} passHref legacyBehavior>
 						<Flex
 							as={'a'}
 							h='100%'
@@ -129,7 +129,7 @@ const MobileNav = ({ navbarItems }: NavbarItemsProps) => {
 const MobileNavbarItem = ({ label, url }: NavbarItem) => {
 	return (
 		<Stack spacing={4}>
-			<Link key={label} href={url} passHref>
+			<Link key={label} href={url} passHref legacyBehavior>
 				<Flex
 					as={'a'}
 					py={2}

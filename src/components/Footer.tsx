@@ -48,10 +48,10 @@ const Footer = ({ siteInfo }: Props): ReactElement => {
 								(
 									<Box h={'8rem'}>
 										{siteInfo.realEstateWebsite ?
-											<Link href={siteInfo.realEstateWebsite ?? ''} passHref>
-												<a target={'_blank'}>
-													{footerImage(siteInfo.headshot)}
-												</a>
+											<Link href={siteInfo.realEstateWebsite ?? ''} passHref target={'_blank'}>
+
+												{footerImage(siteInfo.headshot)}
+
 											</Link>
 											: footerImage(siteInfo.headshot)
 										}
@@ -63,10 +63,10 @@ const Footer = ({ siteInfo }: Props): ReactElement => {
 								(
 									<Box h={'8rem'}>
 										{siteInfo.realEstateWebsite ?
-											<Link href={siteInfo.realEstateWebsite ?? ''} passHref>
-												<a target={'_blank'}>
-													{footerImage(siteInfo.realEstateLogo)}
-												</a>
+											<Link href={siteInfo.realEstateWebsite ?? ''} passHref target={'_blank'}>
+
+												{footerImage(siteInfo.realEstateLogo)}
+
 											</Link>
 											: footerImage(siteInfo.realEstateLogo)
 										}

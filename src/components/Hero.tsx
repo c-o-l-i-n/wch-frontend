@@ -50,7 +50,7 @@ const Hero = ({
 							{heroText}
 						</Heading>
 						<Stack direction={['column', 'row']} spacing={'1rem'}>
-							<Link href={primaryCallToActionButtonLink} passHref>
+							<Link href={primaryCallToActionButtonLink} passHref legacyBehavior>
 								<Button
 									as={'a'}
 									bg={'brand'}
@@ -61,7 +61,7 @@ const Hero = ({
 								</Button>
 							</Link>
 							{secondaryCallToActionButtonText && (
-								<Link href={secondaryCallToActionButtonLink} passHref>
+								<Link href={secondaryCallToActionButtonLink} passHref legacyBehavior>
 									<Button
 										as={'a'}
 										bg={'transparent'}

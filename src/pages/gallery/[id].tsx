@@ -22,9 +22,7 @@ const HouseDetails = ({ house, siteInfo }: Props) => {
 	let bathrooms = `${house.fullBathrooms} Full`
 
 	if (house.halfBathrooms) {
-		bathrooms += `, ${house.halfBathrooms} Half Bathroom${
-			house.halfBathrooms === 1 ? '' : 's'
-		}`
+		bathrooms += `, ${house.halfBathrooms} Half Bathroom${house.halfBathrooms === 1 ? '' : 's'}`
 	} else {
 		bathrooms += ` Bathroom${house.fullBathrooms === 1 ? '' : 's'}`
 	}
@@ -35,19 +33,18 @@ const HouseDetails = ({ house, siteInfo }: Props) => {
 	// include house thumbnail as 1st photo in carousel
 	const photos = house.photos?.data ? [house.thumbnail.data, ...house.photos.data] : [house.thumbnail.data]
 
-	return (
-		<>
-			<SEO
-				seo={{
-					title: house.title,
-					description: metaDescriptionFromHtml(house.description ?? house.title),
-					shareImage: house.thumbnail,
-				}}
-				siteInfo={siteInfo}
-			/>
-			<Layout siteInfo={siteInfo}>
-				<Container thin>
-				<Link href={'/gallery'} passHref>
+	return <>
+		<SEO
+			seo={{
+				title: house.title,
+				description: metaDescriptionFromHtml(house.description ?? house.title),
+				shareImage: house.thumbnail,
+			}}
+			siteInfo={siteInfo}
+		/>
+		<Layout siteInfo={siteInfo}>
+			<Container thin>
+				<Link href={'/gallery'} passHref legacyBehavior>
 					<Button
 						as={'a'}
 						variant='link'
@@ -59,98 +56,97 @@ const HouseDetails = ({ house, siteInfo }: Props) => {
 					</Button>
 				</Link>
 
-					<Heading as={'h3'} size={'lg'}>
-						{house.title}
-					</Heading>
+				<Heading as={'h3'} size={'lg'}>
+					{house.title}
+				</Heading>
 
-					<Carousel photos={photos} />
+				<Carousel photos={photos} />
 
-					<Stack
-						direction={['column', 'row']}
-						spacing={'1.5rem'}
-						mb={'1.5rem'}
-						align={'flex-start'}
-						justify={'space-between'}
+				<Stack
+					direction={['column', 'row']}
+					spacing={'1.5rem'}
+					mb={'1.5rem'}
+					align={'flex-start'}
+					justify={'space-between'}
+				>
+					<VStack
+						fontSize={fontSize}
+						fontWeight={'bold'}
+						alignItems={'flex-start'}
+						lineHeight={'1.15'}
+						spacing={'0.75rem'}
 					>
+						<HStack spacing={iconSpacing}>
+							<FaBed />
+							<Text>
+								{house.bedrooms} Bedroom{house.bedrooms === 1 ? '' : 's'}
+							</Text>
+						</HStack>
+						<HStack spacing={iconSpacing}>
+							<FaBath />
+							<Text>{bathrooms}</Text>
+						</HStack>
+						<HStack spacing={iconSpacing}>
+							<FaRuler />
+							<Text>
+								{house.squareFeet.toLocaleString()} Square Feet
+							</Text>
+						</HStack>
+					</VStack>
+
+
+					{house.floorPlan.data || house.virtualTourLink ?
 						<VStack
-							fontSize={fontSize}
-							fontWeight={'bold'}
-							alignItems={'flex-start'}
 							lineHeight={'1.15'}
 							spacing={'0.75rem'}
+							alignItems={'flex-start'}
 						>
-							<HStack spacing={iconSpacing}>
-								<FaBed />
-								<Text>
-									{house.bedrooms} Bedroom{house.bedrooms === 1 ? '' : 's'}
-								</Text>
-							</HStack>
-							<HStack spacing={iconSpacing}>
-								<FaBath />
-								<Text>{bathrooms}</Text>
-							</HStack>
-							<HStack spacing={iconSpacing}>
-								<FaRuler />
-								<Text>
-									{house.squareFeet.toLocaleString()} Square Feet
-								</Text>
-							</HStack>
+							{house.floorPlan.data ?
+								(
+									<Link href={house.floorPlan.data.attributes.url} passHref legacyBehavior>
+										<Button
+											as={'a'}
+											target={'_blank'}
+											variant='link'
+											leftIcon={<FaFilePdf />}
+											color={'brand'}
+											fontSize={fontSize}
+										>
+											Floor Plan
+										</Button>
+									</Link>
+								)
+								: null
+							}
+
+							{house.virtualTourLink ?
+								(
+									<Link href={house.virtualTourLink} passHref legacyBehavior>
+										<Button
+											as={'a'}
+											target={'_blank'}
+											variant='link'
+											leftIcon={<FaMapMarkerAlt />}
+											color={'brand'}
+											fontSize={fontSize}
+										>
+											Virtual Tour
+										</Button>
+									</Link>
+								)
+								: null
+							}
 						</VStack>
-
-
-						{house.floorPlan.data || house.virtualTourLink ?
-							<VStack 
-								lineHeight={'1.15'}
-								spacing={'0.75rem'}
-								alignItems={'flex-start'}
-							>
-								{house.floorPlan.data ?
-									(
-										<Link href={house.floorPlan.data.attributes.url} passHref>
-											<Button
-												as={'a'}
-												target={'_blank'}
-												variant='link'
-												leftIcon={<FaFilePdf />}
-												color={'brand'}
-												fontSize={fontSize}
-											>
-												Floor Plan
-											</Button>
-										</Link>
-									)
-									: null
-								}
-
-								{house.virtualTourLink ?
-									(
-										<Link href={house.virtualTourLink} passHref>
-											<Button
-												as={'a'}
-												target={'_blank'}
-												variant='link'
-												leftIcon={<FaMapMarkerAlt />}
-												color={'brand'}
-												fontSize={fontSize}
-											>
-												Virtual Tour
-											</Button>
-										</Link>
-									)
-									: null
-								}
-							</VStack>
 						: null}
-					
-						</Stack>
 
-					<Box mb={'3rem'}>
-						<CmsRichText text={house.description} siteInfo={siteInfo} />
-					</Box>
-				</Container>
-			</Layout>
-		</>
-	)
+				</Stack>
+
+				<Box mb={'3rem'}>
+					<CmsRichText text={house.description} siteInfo={siteInfo} />
+				</Box>
+			</Container>
+		</Layout>
+	</>
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {

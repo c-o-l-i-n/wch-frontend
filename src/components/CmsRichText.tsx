@@ -29,10 +29,10 @@ const CmsRichText = ({ text, siteInfo }: Props) => (
 				if (domNode instanceof Element && domNode.name === 'a') {
 					const url = domNode.attribs.href
 					return (
-						<Link href={url} passHref>
-							<a target={isExternalLink(url) ? '_blank' : undefined}>
-								{domToReact(domNode.children)}
-							</a>
+						<Link href={url} passHref target={isExternalLink(url) ? '_blank' : undefined}>
+
+							{domToReact(domNode.children)}
+
 						</Link>
 					)
 				}
