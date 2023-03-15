@@ -5,8 +5,7 @@ import getData, { getSiteInfo } from '../utils/data'
 import Hero from '../components/Hero'
 import Container from '../components/Container'
 import Layout from '../components/Layout'
-import Head from 'next/head'
-import HomePage from '../types/CmsSingleTypes/homePage'
+import HomePageType from '../types/CmsSingleTypes/homePage'
 import CmsRichText from '../components/CmsRichText'
 import ContactForm from '../components/ContactForm'
 import Phone from '../components/Phone'
@@ -14,7 +13,7 @@ import TestimonialCard from '../components/TestimonialCard'
 import SEO from '../components/SEO'
 
 type Props = {
-	homePage: HomePage
+	homePage: HomePageType
 	siteInfo: SiteInformation
 }
 

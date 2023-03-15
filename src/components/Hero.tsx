@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react'
 import Link from 'next/link'
 import Container from './Container'
-import HomePage from '../types/CmsSingleTypes/homePage'
+import HomePageType from '../types/CmsSingleTypes/homePage'
 
 const Hero = ({
 	heroImage,
@@ -17,7 +17,7 @@ const Hero = ({
 	primaryCallToActionButtonLink,
 	secondaryCallToActionButtonText,
 	secondaryCallToActionButtonLink,
-}: HomePage) => {
+}: HomePageType) => {
 	return (
 		<Flex
 			w={'full'}
