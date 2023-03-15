@@ -20,7 +20,7 @@ const SEO = ({ seo, siteInfo }: Props) => {
 			<meta
 				property='og:title'
 				key='og:title'
-				content={title}
+				content={title === globalSeo.title ? title : `${title} - ${siteInfo.websiteName}`}
 			/>
 
 			{/* Description */}
