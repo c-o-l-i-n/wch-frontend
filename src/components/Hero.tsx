@@ -22,7 +22,7 @@ const Hero = ({
 		<Flex
 			w={'full'}
 			h={'70vh'}
-			minHeight={'min-content'}
+			minHeight={'31rem'}
 			maxHeight={'50rem'}
 			backgroundImage={heroImage.data.attributes.url}
 			backgroundSize={'cover'}
@@ -33,13 +33,14 @@ const Hero = ({
 				justifyContent={'center'}
 				alignItems={'flex-start'}
 				px={[4, 8]}
+				pb={[6, 0]}
 				backgroundColor='blackAlpha.700'
 			>
 				<Container>
 					<Stack
 						maxWidth={'4xl'}
 						align={['center', 'flex-start']}
-						spacing={'3rem'}
+						spacing={['2.5rem', '3rem']}
 					>
 						<Heading
 							color={'white'}
@@ -49,7 +50,7 @@ const Hero = ({
 						>
 							{heroText}
 						</Heading>
-						<Stack direction={['column', 'row']} spacing={'1rem'}>
+						<Stack direction={['column', 'row']} spacing={['0.5rem', '1rem']}>
 							<Link href={primaryCallToActionButtonLink} passHref legacyBehavior>
 								<Button
 									as={'a'}
