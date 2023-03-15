@@ -5,7 +5,7 @@ import getData, { getSiteInfo } from '../../utils/data'
 import Container from '../../components/Container'
 import Layout from '../../components/Layout'
 import House from '../../types/CmsCollectionTypes/house'
-import { FaBath, FaBed, FaFilePdf, FaRuler } from 'react-icons/fa'
+import { FaBath, FaBed, FaFilePdf, FaMapMarkerAlt, FaRuler } from 'react-icons/fa'
 import Carousel from '../../components/Carousel'
 import CmsRichText from '../../components/CmsRichText'
 import SEO from '../../components/SEO'
@@ -97,25 +97,52 @@ const HouseDetails = ({ house, siteInfo }: Props) => {
 							</HStack>
 						</VStack>
 
-						{house.floorPlan.data ?
-							(
-								<Link href={house.floorPlan.data.attributes.url} passHref>
-									<Button
-										as={'a'}
-										target={'_blank'}
-										variant='link'
-										leftIcon={<FaFilePdf />}
-										color={'brand'}
-										fontSize={fontSize}
-										marginTop={'1.5rem'}
-									>
-										View Floor Plan
-									</Button>
-								</Link>
-							)
-							: null
-						}
-					</Stack>
+
+						{house.floorPlan.data || house.virtualTourLink ?
+							<VStack 
+								lineHeight={'1.15'}
+								spacing={'0.75rem'}
+								alignItems={'flex-start'}
+							>
+								{house.floorPlan.data ?
+									(
+										<Link href={house.floorPlan.data.attributes.url} passHref>
+											<Button
+												as={'a'}
+												target={'_blank'}
+												variant='link'
+												leftIcon={<FaFilePdf />}
+												color={'brand'}
+												fontSize={fontSize}
+											>
+												Floor Plan
+											</Button>
+										</Link>
+									)
+									: null
+								}
+
+								{house.virtualTourLink ?
+									(
+										<Link href={house.virtualTourLink} passHref>
+											<Button
+												as={'a'}
+												target={'_blank'}
+												variant='link'
+												leftIcon={<FaMapMarkerAlt />}
+												color={'brand'}
+												fontSize={fontSize}
+											>
+												Virtual Tour
+											</Button>
+										</Link>
+									)
+									: null
+								}
+							</VStack>
+						: null}
+					
+						</Stack>
 
 					<Box mb={'3rem'}>
 						<CmsRichText text={house.description} siteInfo={siteInfo} />

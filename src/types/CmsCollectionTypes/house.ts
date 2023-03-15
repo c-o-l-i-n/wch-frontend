@@ -11,5 +11,6 @@ export default interface House {
 	squareFeet: number
 	photos: { data: Array<CmsMediaData> }
 	floorPlan: CmsMedia
+	virtualTourLink: string
 	description: string
 }
