@@ -29,7 +29,7 @@ const Footer = ({ siteInfo }: Props): ReactElement => {
 				<Stack
 					direction={['column', 'row']}
 					justifyContent='space-between'
-					spacing='2rem'
+					spacing='1rem'
 				>
 					<Box textAlign={['center', 'unset']}>
 						<CmsRichText text={siteInfo.footerLeft} siteInfo={siteInfo} />
