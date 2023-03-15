@@ -4,9 +4,9 @@ import Container from './Container'
 import CmsRichText from './CmsRichText'
 import Link from 'next/link'
 import CmsMedia from '../types/cmsMedia'
-import { ReactElement } from 'react-markdown/lib/react-markdown'
+import { ReactElement } from 'react'
 
-const footgerImage = (image: CmsMedia, siteInfo: SiteInformation): ReactElement => (
+const footerImage = (image: CmsMedia): ReactElement => (
 	<Image
 		src={image.data.attributes.formats.small?.url ?? image.data.attributes.url}
 		alt={image.data.attributes.alternativeText}
@@ -50,10 +50,10 @@ const Footer = ({ siteInfo }: Props): ReactElement => {
 										{siteInfo.realEstateWebsite ?
 											<Link href={siteInfo.realEstateWebsite ?? ''} passHref>
 												<a target={'_blank'}>
-													{footgerImage(siteInfo.headshot, siteInfo)}
+													{footerImage(siteInfo.headshot)}
 												</a>
 											</Link>
-											: footgerImage(siteInfo.headshot, siteInfo)
+											: footerImage(siteInfo.headshot)
 										}
 									</Box>
 								)
@@ -65,10 +65,10 @@ const Footer = ({ siteInfo }: Props): ReactElement => {
 										{siteInfo.realEstateWebsite ?
 											<Link href={siteInfo.realEstateWebsite ?? ''} passHref>
 												<a target={'_blank'}>
-													{footgerImage(siteInfo.realEstateLogo, siteInfo)}
+													{footerImage(siteInfo.realEstateLogo)}
 												</a>
 											</Link>
-											: footgerImage(siteInfo.realEstateLogo, siteInfo)
+											: footerImage(siteInfo.realEstateLogo)
 										}
 									</Box>
 								)
