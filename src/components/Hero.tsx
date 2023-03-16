@@ -24,7 +24,7 @@ const Hero = ({
 			h={'70vh'}
 			minHeight={'31rem'}
 			maxHeight={'50rem'}
-			backgroundImage={heroImage.data.attributes.url}
+			backgroundImage={encodeURI(heroImage.data.attributes.url)}
 			backgroundSize={'cover'}
 			backgroundPosition={'center'}
 		>

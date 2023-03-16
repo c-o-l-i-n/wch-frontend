@@ -37,7 +37,7 @@ const HouseCard = ({ house }: Props) => {
 					height={192}
 					width={'full'}
 					rounded={'lg'}
-					backgroundImage={`url(${house.thumbnail.data.attributes.formats.small?.url ?? house.thumbnail.data.attributes.url})`}
+					backgroundImage={`url(${encodeURI(house.thumbnail.data.attributes.formats.small?.url ?? house.thumbnail.data.attributes.url)})`}
 					backgroundPosition={'center'}
 					backgroundColor={'#ddd'}
 					backgroundSize={house.thumbnail.data ? 'cover' : '4rem'}

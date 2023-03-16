@@ -38,7 +38,7 @@ const Carousel = ({ photos }: Props) => {
 							w={'full'}
 							h={'full'}
 							backgroundColor={'gray.700'}
-							backgroundImage={photo.attributes.formats.large?.url ?? photo.attributes.url}
+							backgroundImage={encodeURI(photo.attributes.formats.large?.url ?? photo.attributes.url)}
 							backgroundSize={photoShouldFillFrame(photo) ? 'cover' : 'contain'}
 							backgroundRepeat={'no-repeat'}
 							backgroundPosition={'center center'}
