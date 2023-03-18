@@ -4,15 +4,15 @@
   <a href="https://github.com/c-o-l-i-n/wch-frontend/actions/workflows/deploy.yml">
     <img alt="Github Build and Deployment Status" src="https://img.shields.io/github/actions/workflow/status/c-o-l-i-n/wch-frontend/deploy.yml?logo=github&logoWidth=12">
   </a>
-  <a href="https://new.williamscustomhomes.com">
-    <img alt="Website Monitoring Status" src="https://img.shields.io/website?url=https%3A%2F%2Fnew.williamscustomhomes.com">
+  <a href="https://williamscustomhomes.com">
+    <img alt="Website Monitoring Status" src="https://img.shields.io/website?url=https%3A%2F%2Fwilliamscustomhomes.com">
   </a>
 </div>
 
 <br />
 
 <div align="center" >
-  <a href="https://new.williamscustomhomes.com">
+  <a href="https://williamscustomhomes.com">
     <img src="public/images/logo.svg" alt="Logo" />
   </a>
 </div>
@@ -34,7 +34,7 @@ The website frontend is a [Next.js](https://nextjs.org/) static site hosted on [
 ### Prerequisites
 
 - [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/) v12.22 or higher
+- [Node.js](https://nodejs.org/) v14.6.0 or higher
 
 ### Install
 
