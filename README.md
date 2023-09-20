@@ -1,8 +1,8 @@
 <h1 align="center">Williams Custom Homes Website Frontend</h1>
 
 <div align="center">
-  <a href="https://github.com/c-o-l-i-n/wch-frontend/actions/workflows/deploy.yml">
-    <img alt="Github Build and Deployment Status" src="https://img.shields.io/github/actions/workflow/status/c-o-l-i-n/wch-frontend/deploy.yml?logo=github&logoWidth=12">
+  <a href="https://github.com/c-o-l-i-n/wch-frontend/actions/workflows/build.yml">
+    <img alt="Github Build Status" src="https://img.shields.io/github/actions/workflow/status/c-o-l-i-n/wch-frontend/build.yml?logo=github&logoWidth=12">
   </a>
   <a href="https://williamscustomhomes.com">
     <img alt="Website Monitoring Status" src="https://img.shields.io/website?url=https%3A%2F%2Fwilliamscustomhomes.com">
@@ -21,20 +21,20 @@
 
 Williams Custom Homes is a family-owned custom home building business in Stark County, Ohio.
 
-The website frontend is a [Next.js](https://nextjs.org/) static site hosted on [Github Pages](https://pages.github.com/). A [workflow](.github/workflows/deploy.yml) rebuilds the site when content changes.
+The website frontend is a [Next.js](https://nextjs.org/) static site hosted on [Cloudflare Pages](https://pages.cloudflare.com/).
 
 ### Technology Stack
 
 [![Next.js](https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Github Pages](https://img.shields.io/badge/Github%20Pages-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)](https://pages.github.com/)
+[![Cloudflare Pages](https://img.shields.io/badge/Cloudflare%20Pages-F38020?style=for-the-badge&logo=Cloudflare%20Pages&logoColor=white)](https://pages.cloudflare.com/)
 
 ## Getting Started
 
 ### Prerequisites
 
 - [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/) v14.6.0 or higher
+- [Node.js](https://nodejs.org/) v18
 
 ### Install
 
